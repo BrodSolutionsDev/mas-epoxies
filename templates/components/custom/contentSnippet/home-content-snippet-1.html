@@ -1,0 +1,21 @@
+<div class="snippet-content {{#if theme_settings.background-image-snippet-1 '==' ''}}no-snippet-img{{else}}{{#if theme_settings.image-flip-snippet-1 '==' 'none'}}snippet-flip-n {{/if}}{{#if theme_settings.image-flip-snippet-1 '==' 'horizontal'}}snippet-flip-h{{/if}}{{#if theme_settings.image-flip-snippet-1 '==' 'vertical'}}snippet-flip-v{{/if}}{{/if}}">
+	{{#if theme_settings.background-image-snippet-1 "!==" ""}}
+		<div class="snippet-content-img" style="background-image: url('{{getImage theme_settings.background-image-snippet-1}}');">
+		</div>
+	{{/if}}
+	<div class="snippet-content-figure">
+		<div class="snippet-content-wrap {{#if theme_settings.font-icon-snippet-1 '==' ''}}snippet-icon-none{{else}}{{#if theme_settings.icon-position-snippet-1 '==' 'top'}}snippet-icon-top{{/if}}{{#if theme_settings.icon-position-snippet-1 '==' 'right'}}snippet-icon-right{{/if}}{{#if theme_settings.icon-position-snippet-1 '==' 'bottom'}}snippet-icon-bottom{{/if}}{{#if theme_settings.icon-position-snippet-1 '==' 'left'}}snippet-icon-left{{/if}}{{/if}}">
+			{{#if theme_settings.icon-position-snippet-1 "!==" "bottom"}}
+				<i class="{{theme_settings.font-icon-snippet-1}} {{theme_settings.icon-size-snippet-1}}"></i>
+			{{/if}}
+	        <h4 class="snippet-title">{{theme_settings.title-text-snippet-1}}</h4>
+	        <p class="snippet-des">{{theme_settings.body-text-snippet-1}}</p>
+	        {{#if theme_settings.icon-position-snippet-1 "==" "bottom"}}
+				<i class="{{theme_settings.font-icon-snippet-1}} {{theme_settings.icon-size-snippet-1}}"></i>
+			{{/if}}
+			{{#if theme_settings.btn-text-snippet-1 "!==" ""}}
+				<p class="snippet-btn"><a href="{{theme_settings.btn-url-snippet-1}}">{{theme_settings.btn-text-snippet-1}}</a></p>
+			{{/if}}
+    	</div>
+	</div>
+</div>

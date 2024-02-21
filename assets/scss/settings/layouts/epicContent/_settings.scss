@@ -1,0 +1,109 @@
+$body-text-color:             stencilColor("color-textBase");
+// Arrow
+$epic-arrow-color:             stencilColor("epic-arrow-color");
+$epic-arrow-bgColor:           stencilColor("epic-arrow-background");
+$epic-arrow-borderColor:       stencilColor("epic-arrow-border-color");
+
+// Top bar
+$top-bar-backgroung-color:                  stencilColor("top-bar-backgroung-color");
+$top-bar-text-color:                        stencilColor("top-bar-text-color");
+$top-bar-text-hover-color:                  stencilColor("top-bar-text-hover-color");
+$top-bar-border-color:                      stencilColor("top-bar-border-color");
+
+// Header
+$header-bg:                                 stencilColor("header-background-color");
+$header-text-color: 						stencilColor("header-text-color");
+$header-icon-color: 						stencilColor("header-icon-color");
+$header-search-border-color:				stencilColor("header-search-border-color");
+$dropdown-menu-bg:							stencilColor("navUser-dropdown-backgroundColor");
+$dropdown-menu-border:						stencilColor("navUser-dropdown-borderColor");
+
+// Nav bar
+$nav-bar-backgroung-color:                  stencilColor("nav-bar-backgroung-color");
+$nav-bar-border-color:                  	stencilColor("nav-bar-border-color");
+$nav-bar-text-color:                        stencilColor("nav-bar-text-color");
+$nav-bar-text-hover-color:                  stencilColor("cs-navbar-text-hover-color");
+$nav-bar-dropdown-bgcolor:             		stencilColor("nav-bar-dropdown-bgcolor");
+$nav-bar-dropdown-txtcolor:            		stencilColor("nav-bar-dropdown-txtcolor");
+$nav-bar-dropdown-txthover-color:       	stencilColor("nav-bar-dropdown-txthover-color");
+$nav-bar-dropdown-txthover-Bgcolor:       	stencilColor("nav-bar-dropdown-txthover-Bgcolor");
+$epicnavbar-font-family:                    stencilFontFamily("epicnavbar-font-family"), Arial, Helvetica, sans-serif;
+$epicnavbar-fontSize-root:                  stencilNumber("epicnavbar-fontSize-root");
+$epicnavbar-font-weight:                    stencilString("epicnavbar-font-weight");
+$category-menu-bt-color:                    stencilColor("category-menu-bt-color");
+$category-menu-bt-bgcolor:                  stencilColor("category-menu-bt-bgcolor");
+$category-menu-border-color:                stencilColor("category-menu-border-color");
+$cm-background-color:                  		stencilColor("cm-background-color");
+$cm-text-color:                  			stencilColor("cm-text-color");
+$cm-hover-background-color:                 stencilColor("cm-hover-background-color");
+$cm-hover-text-color:                  		stencilColor("cm-hover-text-color");
+
+// Blog
+$bb-background-color:                  		stencilColor("blog--box-background-color");
+$home-blog-title-color:                  	stencilColor("home-blog-title-color");
+$home-blog-text-color:                  	stencilColor("home-blog-text-color");
+
+//Product Cards
+$product-image-background-color:         	stencilColor("product-image-background-color");
+$product-card-hover-background:				stencilColor("product-card-hover-background");
+$card-alternate-background:         		stencilColor("card--alternate-backgroundColor");
+$card-alternate-textcolor:					stencilColor("card--alternate-textColor");
+$card-alternate-hover-background:         	stencilColor("card--alternate-hover-backgroundColor");
+$card-alternate-color-hover:				stencilColor("card--alternate-color--hover");
+
+// Home snippet
+$text-color-snippet-1:             			stencilColor("text-color-snippet-1");
+$background-color-snippet-1:             	stencilColor("background-color-snippet-1");
+$btn-color-snippet-1:             			stencilColor("btn-color-snippet-1");
+$btn-hover-color-snippet-1:             	stencilColor("btn-hover-color-snippet-1");
+$btn-background-snippet-1:             		stencilColor("btn-background-snippet-1");
+$btn-hover-background-snippet-1:         	stencilColor("btn-hover-background-snippet-1");
+
+$text-color-snippet-2:             			stencilColor("text-color-snippet-2");
+$background-color-snippet-2:             	stencilColor("background-color-snippet-2");
+$btn-color-snippet-2:             			stencilColor("btn-color-snippet-2");
+$btn-hover-color-snippet-2:             	stencilColor("btn-hover-color-snippet-2");
+$btn-background-snippet-2:             		stencilColor("btn-background-snippet-2");
+$btn-hover-background-snippet-2:         	stencilColor("btn-hover-background-snippet-2");
+
+$text-color-snippet-3:             			stencilColor("text-color-snippet-3");
+$background-color-snippet-3:             	stencilColor("background-color-snippet-3");
+$btn-color-snippet-3:             			stencilColor("btn-color-snippet-3");
+$btn-hover-color-snippet-3:             	stencilColor("btn-hover-color-snippet-3");
+$btn-background-snippet-3:             		stencilColor("btn-background-snippet-3");
+$btn-hover-background-snippet-3:         	stencilColor("btn-hover-background-snippet-3");
+
+$text-color-snippet-4:             			stencilColor("text-color-snippet-4");
+$background-color-snippet-4:             	stencilColor("background-color-snippet-4");
+$btn-color-snippet-4:             			stencilColor("btn-color-snippet-4");
+$btn-hover-color-snippet-4:             	stencilColor("btn-hover-color-snippet-4");
+$btn-background-snippet-4:             		stencilColor("btn-background-snippet-4");
+$btn-hover-background-snippet-4:         	stencilColor("btn-hover-background-snippet-4");
+
+// Footer
+$epic-footer-heading-background:            stencilColor("epic_footer_heading_backgroundColor");
+$epic-footer-heading-font-size:             stencilNumber("epic_footer_heading_font_size");
+$epic-footer-text-font-size:                stencilNumber("epic_footer_text_font_size");
+$epic-footer-heading-fontColor:             stencilColor("epic_footer_heading_textColor");
+$epic-footer-heading-paragraph-fontColor:   stencilColor("epic_footer_heading_paragraph_textColor");
+
+$footer_newsletter_BackgroundColor:           stencilColor("footer_newsletter_BackgroundColor");
+$footer_newsletter_TitleColor:                stencilColor("footer_newsletter_TitleColor");
+$footer_newsletter_TextColor:                 stencilColor("footer_newsletter_TextColor");
+
+$epic-footer-background:                    stencilColor("epic_footer_backgroundColor");
+$epic-footer-titleColor:                    stencilColor("epic_footer_titleColor");
+$epic-footer-fontColor:                     stencilColor("epic_footer_textColor");
+$epic_footer_borderColor:                   stencilColor("epic_footer_borderColor");
+
+$epic-footer-copyright-backgroundColor:     stencilColor("epic_copyright_backgroundColor");
+$epic-footer-copyright-textColor:           stencilColor("epic_copyright_textColor");
+
+// Newsletter Popup
+$np_backgroundColor:           				stencilColor("np_backgroundColor");
+$np_textColor:           					stencilColor("np_textColor");
+$np_overlayFill:                  			rgba(stencilColor("overlay-backgroundColor"), 0.85);
+
+// Help Center Page
+$hc-tab-text:             					stencilColor("color-textBase");
+$hc-tab-active:           					stencilColor("color-primary");

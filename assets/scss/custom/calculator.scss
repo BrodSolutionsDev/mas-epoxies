@@ -1,0 +1,113 @@
+.calculators {
+  .grid-3 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 30px 0;
+    overflow: hidden;
+    .box {
+      min-height: 350px;
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 1rem;
+      }
+    }
+  }
+  #epoxy-resin-volume-calculator,
+  #circle-volume-calculator,
+  #mix-ratio-2,
+  #mix-ratio-3,
+  #mix-ratio-5,
+  #mix-ratio-tabletop,
+  #mix-ratio-artpro,
+  #mix-ratio-deeppour,
+  #mix-ratio-deeppourx,
+  #mix-ratio-penetrating,
+  #mix-ratio-annies,
+  #mix-ratio-lv,
+  #mix-ratio-marine {
+    background-color: $grey-background;
+    padding: 1.5rem;
+    margin: 1px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $black;
+    border-radius: 0.3rem;
+    h3 {
+      span {
+        color:$red;
+        font-weight: normal!important;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  h4 {
+    font-size: 1.25rem;
+  }
+  .results {
+    span {
+      display: block;
+      font-size: 1.6em;
+      font-weight: 700;
+      padding: 0.3em;
+    }
+  }
+
+  /* Inputs */
+  label {
+    color: $black;
+    display: block;
+    font-size: 0.9em;
+    font-weight: 400;
+    margin: 0;
+    padding: 0.3em 0;
+  }
+  input {
+    max-width: 50%;
+    border-radius: 0.3rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    font-size: 15px;
+    border: 0;
+    border-bottom: transparent 2px solid;
+    background-color: $white;
+    color: $black;
+    font-weight: 700;
+    padding: 0.75em 1em;
+    height: auto;
+    margin: 0;
+    transition: all 0.2s ease-in-out;
+  }
+  input:focus {
+    border-bottom: $blue 2px solid;
+    color: $blue;
+  }
+  // Remove arrows
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+.calculator-table {
+  text-align: center;
+  td {
+    padding: 10px;
+    border: solid $black 1px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .calculators {
+    .grid-3 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<div class="header-search">
+    <div class="container">
+    <form class="form" action="{{urls.search}}">
+        <div class="search-input-field">
+            <input class="search_" name="search_query_adv" data-search-quick type="search" autocomplete="off" onfocus="this.placeholder=''" onblur="this.placeholder='{{theme_settings.header-search-text}}'" placeholder="{{theme_settings.header-search-text}}">
+            <button  class="button button--primary" name="go" value="Search for Resin, Projects and More...">
+                <i class="fal fa-search"></i>
+            </button>
+        </div>
+    </form>
+    {{#if theme_settings.logo-position '==' 'center'}}
+        <section class="quickSearchResults quick-search" data-bind="html: results"></section>
+    {{/if}}
+    </div>
+</div>

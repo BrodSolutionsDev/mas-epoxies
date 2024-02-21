@@ -1,0 +1,75 @@
+<div class="container">
+    {{#if theme_settings.mega-menu}}
+    <div class="row">
+        <div class="col-lg-12 navPages-container">
+            <nav class="navPages {{theme_settings.column-per-row}}">
+                <ul class="navPages-list">
+                    <li class="navPages-item navPages-item-page">
+                        <a class="navPages-action{{#if name '==' ../page.title}} activePage{{/if}}"
+                           href="/"
+                           aria-label="Home"
+                        >
+                            Home
+                        </a>
+                    </li>
+                    {{#each categories}}
+                        <li class="navPages-item">
+                            {{> components/epicNavbar/default-nav-item theme_settings=../theme_settings}}
+                        </li>
+                    {{/each}}
+                    {{#unless theme_settings.hide_content_navigation}}
+                        {{#each pages}}
+                             <li class="navPages-item navPages-item-page">
+                                {{#if children}}
+                                <a class="navPages-action has-subMenu" href="{{url}}">{{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
+                                <div class="navPage-subMenu" id="navPages-index{{@index}}" aria-hidden="true" tabindex="-1">
+                                    <ul class="navPage-subMenu-list">
+                                        {{#each children}}
+                                        <li class="navPage-subMenu-item">
+                                            <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{name}}</a>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                                {{else}}
+                                    <a class="navPages-action" href="{{url}}">{{name}}</a>
+                                {{/if}}
+                             </li>
+                         {{/each}}
+                     {{/unless}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {{else}}
+    <nav class="navPages nav-without-mm">
+            <ul class="navPages-list">
+                {{#each categories}}
+                    <li class="navPages-item">
+                        {{> components/common/navigation-list-alternate}}
+                    </li>
+                {{/each}}
+                {{#unless theme_settings.hide_content_navigation}}
+                    {{#each pages}}
+                         <li class="navPages-item navPages-item-page">
+                            {{#if children}}
+                            <a class="navPages-action has-subMenu" href="{{url}}">{{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
+                            <div class="navPage-subMenu" id="navPages-index{{@index}}" aria-hidden="true" tabindex="-1">
+                                <ul class="navPage-subMenu-list">
+                                    {{#each children}}
+                                    <li class="navPage-subMenu-item">
+                                        <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{name}}</a>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            {{else}}
+                                <a class="navPages-action" href="{{url}}">{{name}}</a>
+                            {{/if}}
+                         </li>
+                     {{/each}}
+                 {{/unless}}
+            </ul>
+        </nav>
+    {{/if}}
+</div>

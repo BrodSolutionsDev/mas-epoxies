@@ -1,0 +1,162 @@
+@media only screen and (min-width:1261px)
+{
+	.productView-description
+	{
+		width: 100%;
+	}
+	.productView-images 
+	{
+    	.productView-image
+    	{
+    		width: 80%;
+    		float: right;
+    	}
+    	.productView-image + .productView-thumbnails
+    	{
+    		width: 20%;
+    		margin:0;
+    		float: left;
+    		.slick-list
+    		{
+    			margin:2.85714rem 0;
+    		}
+    		.slick-next
+    		{
+    			right: auto;
+			    bottom: -10px;
+			    transform: rotate(90deg) translate(0, 0);
+			    margin: 0;
+			    top: auto;
+			    left: 50%;
+			    margin-left: -20px
+    		}
+    		.slick-prev
+    		{
+			    transform: rotate(90deg) translate(0, 0);
+			    margin: 0;
+			    top: -10px;
+			    left: 50%;
+			    margin-left: -20px
+    		}
+    		.productView-thumbnail
+    		{
+    			width:100%;
+    		}
+    	}
+	}
+}
+#wishlist-dropdown.is-open 
+{
+	top: calc(100% - 1rem)!important;
+}
+@media only screen and (min-width:801px)
+{
+	.productView-images 
+	{
+    	width: 60%;
+	}
+	.productView-details
+	{
+		width:40%;
+	}
+	
+}
+.productView-image
+{
+	background-color:$product-image-background-color;
+}
+.productView-details
+{
+	&.product-options
+	{
+		overflow: visible;
+	}
+	.productView-options
+	{
+		.form
+		{
+			display: inline-block;
+		}
+		.form-wishlist
+		{
+			#wishlist-dropdown.is-open
+			{
+				top: calc(100% - 1rem)!important;
+			}
+		}
+	}
+	.socialLinks
+	{
+		.socialLinks-item
+		{
+			width:auto!important;
+			&:last-child
+			{
+				margin-right: 0.78571rem;
+			}
+		}
+		.icon
+		{
+			background-color: $buttonStyle-primary-backgroundColor;
+		    height: 2.42857rem;
+		    width: 2.42857rem!important;
+		    padding: 8px;
+		    display: block;
+		    border-radius: 50%;
+		    svg
+		    {
+		    	fill:$buttonStyle-primary-color;
+		    }
+		    &:hover
+		    {
+		    	background-color: $buttonStyle-primary-backgroundColorHover;
+		    	svg
+		    	{
+		    		fill:$buttonStyle-primary-colorHover;
+		    	}
+		    }
+		}
+	}
+}
+.productView-description, .productView-tabs
+{
+	.tabs
+	{
+		.tab
+		{	border-left:none;
+			border-right:none;
+			border-top:none;
+			border-bottom:3px solid transparent;
+			&.is-active
+			{
+				border-bottom:3px solid $buttonStyle-primary-backgroundColor;
+			}
+		}
+	}
+}
+@media only screen and (min-width: 551px) and (max-width:800px)
+{
+	.productView-options .form-action
+	{
+    	float: none;
+    	padding: 0;
+    	width: auto;
+	}
+}
+@media only screen and (max-width:800px)
+{
+	.productView-options
+	{
+    	text-align: center;
+	}
+	.productView-details .socialLinks
+	{
+		text-align: center;
+	}
+}
+.productView-title {
+	margin-top:0;
+}
+.productView-details .productView-options .form-field {
+    position: relative;
+}

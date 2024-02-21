@@ -1,0 +1,32 @@
+  <div class="row align-items-center p-relative z-99">
+    <div class="col-3">
+        <a href="#main-content" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+            <span class="icon">
+                <svg><use xlink:href="#icon-menu-search" /></svg>
+            </span>
+        </a>
+    </div>
+    <div class="col-6 p-0">
+        {{#if theme_settings.use-mobile-logo}}
+            {{> components/common/mobile-logo}}
+        {{else}}
+            {{> components/common/store-logo}}
+        {{/if}}
+    </div>
+    <div class="col-3 text-right mobile-cart-btn">
+        <a href="{{urls.cart}}">
+            <span class="navUser-item-cartLabel">
+                <span class="icon">
+                    <svg><use xlink:href="#icon-shopping-cart" /></svg>
+                </span>
+            </span><span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity">{{cart.quantity}}</span>
+        </a>
+                    <!-- <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div> -->
+        
+    </div>
+</div>
+<div class="cs-navbar nav-bar">
+    <div class="navPages-container" id="menu" data-menu>
+        {{> components/common/navigation-menu}}
+    </div>
+</div>

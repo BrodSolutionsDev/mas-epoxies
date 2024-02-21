@@ -1,0 +1,131 @@
+
+{{#if children}}
+<a class="navPages-action has-subMenu" href="{{url}}">{{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+</a>
+<div class="navPage-subMenu" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 submenu-column{{#if theme_settings.nav-category-one-name '=='name}}{{#if theme_settings.nav-category-right-image-one}} col-lg-8{{/if}}{{/if}}{{#if theme_settings.nav-category-two-name '=='name}}{{#if theme_settings.nav-category-right-image-two}} col-lg-8{{/if}}{{/if}}{{#if theme_settings.nav-category-three-name '=='name}}{{#if theme_settings.nav-category-right-image-three}} col-lg-8{{/if}}{{/if}}{{#if theme_settings.nav-category-four-name '=='name}}{{#if theme_settings.nav-category-right-image-four}} col-lg-8{{/if}}{{/if}}{{#if theme_settings.nav-category-five-name '=='name}}{{#if theme_settings.nav-category-right-image-five}} col-lg-8{{/if}}{{/if}}">
+                <ul class="navPage-subMenu-list">
+                    <!-- <li class="navPage-subMenu-item subMenu-viewAll">
+                        <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
+                    </li> -->
+                    {{#each children}}
+                        <li class="navPage-subMenu-item">
+                            {{#if children}}
+                                <a
+                                    class="navPage-subMenu-action navPages-action has-subMenu"
+                                    href="{{url}}">
+                                    {{name}}<i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                                </a>
+                                <ul class="navPage-childList" id="navPages-{{id}}">
+                                    {{#each children}}
+                                    <li class="navPage-childList-item">
+                                        {{#if children}}
+                                            <a class="navPage-childList-action navPages-action" href="{{url}}">{{name}}</a>
+                                            <ul class="navPage-childList" id="navPages-{{id}}">
+                                                {{#each children}}
+                                                <li class="navPage-childList-item">
+                                                    <a class="navPage-childList-action navPages-action" href="{{url}}">{{name}}</a>
+                                                </li>
+                                                {{/each}}
+                                            </ul>
+                                        {{else}}
+                                            <a class="navPage-childList-action navPages-action" href="{{url}}">{{name}}</a>
+                                        {{/if}}
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            {{else}}
+                                <a class="as navPage-subMenu-action navPages-action" href="{{url}}">{{name}}</a>
+                            {{/if}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{#if theme_settings.nav-category-one-name '=='name}}
+                {{#if theme_settings.nav-category-right-image-one}}
+                    <div class="col-12 col-lg-4 submenu-img-column">
+                        <a href="{{theme_settings.nav-category-right-url-one}}">
+                            <img src="{{getImage theme_settings.nav-category-right-image-one}}">
+                        </a>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.nav-category-bottom-image-one}}
+                    <div class="col-12 col-lg-12 submenu-img-bottom">
+                        <a href="{{theme_settings.nav-category-bottom-url-one}}">
+                            <img src="{{getImage theme_settings.nav-category-bottom-image-one}}">
+                        </a>
+                    </div>
+                {{/if}}
+            {{/if}}
+            {{#if theme_settings.nav-category-two-name '=='name}}
+                {{#if theme_settings.nav-category-right-image-two}}
+                    <div class="col-12 col-lg-4 submenu-img-column">
+                        <a href="{{theme_settings.nav-category-right-url-two}}">
+                            <img src="{{getImage theme_settings.nav-category-right-image-two}}">
+                        </a>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.nav-category-bottom-image-two}}
+                    <div class="col-12 col-lg-12 submenu-img-bottom">
+                        <a href="{{theme_settings.nav-category-bottom-url-two}}">
+                            <img src="{{getImage theme_settings.nav-category-bottom-image-two}}">
+                        </a>
+                    </div>
+                {{/if}}
+            {{/if}}
+            {{#if theme_settings.nav-category-three-name '=='name}}
+                {{#if theme_settings.nav-category-right-image-three}}
+                    <div class="col-12 col-lg-4 submenu-img-column">
+                        <a href="{{theme_settings.nav-category-right-url-three}}">
+                            <img src="{{getImage theme_settings.nav-category-right-image-three}}">
+                        </a>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.nav-category-bottom-image-three}}
+                    <div class="col-12 col-lg-12 submenu-img-bottom">
+                        <a href="{{theme_settings.nav-category-bottom-url-three}}">
+                            <img src="{{getImage theme_settings.nav-category-bottom-image-three}}">
+                        </a>
+                    </div>
+                {{/if}}
+            {{/if}}
+            {{#if theme_settings.nav-category-four-name '=='name}}
+                {{#if theme_settings.nav-category-right-image-four}}
+                    <div class="col-12 col-lg-4 submenu-img-column">
+                        <a href="{{theme_settings.nav-category-right-url-four}}">
+                            <img src="{{getImage theme_settings.nav-category-right-image-four}}">
+                        </a>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.nav-category-bottom-image-four}}
+                    <div class="col-12 col-lg-12 submenu-img-bottom">
+                        <a href="{{theme_settings.nav-category-bottom-url-four}}">
+                            <img src="{{getImage theme_settings.nav-category-bottom-image-four}}">
+                        </a>
+                    </div>
+                {{/if}}
+            {{/if}}
+            {{#if theme_settings.nav-category-five-name '=='name}}
+                {{#if theme_settings.nav-category-right-image-five}}
+                    <div class="col-12 col-lg-4 submenu-img-column">
+                        <a href="{{theme_settings.nav-category-right-url-five}}">
+                            <img src="{{getImage theme_settings.nav-category-right-image-five}}">
+                        </a>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.nav-category-bottom-image-five}}
+                    <div class="col-12 col-lg-12 submenu-img-bottom">
+                        <a href="{{theme_settings.nav-category-bottom-url-five}}">
+                            <img src="{{getImage theme_settings.nav-category-bottom-image-five}}">
+                        </a>
+                    </div>
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+{{else}}
+<a class="navPages-action" href="{{url}}">{{name}}</a>
+{{/if}}

@@ -1,0 +1,156 @@
+*:focus
+{
+	outline:none;
+}
+a
+{
+	text-decoration:none;
+}
+.button
+{
+    border-radius:30px;
+}
+.text-left
+{
+	text-align:left;
+}
+.text-center
+{
+	text-align:center;
+}
+.text-right
+{
+	text-align:right;
+}
+.p-relative
+{
+    position: relative;
+}
+.z-99
+{
+    z-index:99;
+}
+.divider-15 
+{
+    height: 15px;
+}
+.divider-30
+{
+    height: 30px;
+}
+@media only screen and (min-width:1401px)
+{
+    .container
+    {
+        max-width:1400px;
+    }
+}
+.slick-dots
+{
+    li
+    {
+        background-color: transparent!important;
+        height: 2rem;
+        width: 2rem;
+        margin: 0;
+        padding: 0;
+        button
+        {
+            border:none;
+            &:before
+            {
+                background-color:$slick-dot-color;
+                opacity:1;
+            }
+        }
+        &.slick-active
+        {
+            button:before
+            {
+                background-color:$slick-dot-color-active;
+            }
+        }
+    }
+}
+.slick-next, .slick-prev
+{
+    border: none;
+    height: 3rem;
+    padding: 0;
+    width: 3rem;
+    border-radius: 50%;
+    transition: all .5s ease;
+    background-color:$epic-arrow-bgColor!important;
+    border:1px solid $epic-arrow-borderColor;
+    &:hover, &:focus
+    {
+        border: 1px solid $epic-arrow-borderColor;
+        box-shadow:none;
+        background-color:$epic-arrow-bgColor!important;
+    }
+    &:before
+    {
+        background-image: none!important;
+        display: block;
+        height: 100%;
+        margin: 0 auto;
+        line-height:3rem;
+        color:$epic-arrow-color;
+        width: 100%;
+        font-family: 'Font Awesome 5 Pro';
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 300;
+    }
+}
+.slick-next
+{
+    @media only screen and (max-width:1440px)
+    {
+        right: 15px!important;
+    }
+	&:before
+    {
+        content:"\f178";
+    }
+}
+.slick-prev
+{   
+    @media only screen and (max-width:1440px)
+    {
+        left: 15px!important;
+    }
+	&:before
+    {
+        content:"\f177";
+    }
+}
+.slick-disabled
+{
+	opacity:0.3;
+}
+.slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {
+    opacity: 1;
+}
+@media only screen and (min-width:801px)
+{
+	.page-content--centered
+	{
+		width:100%;
+		max-width:1200px;
+	}
+}
+@media only screen and (min-width:1200px)
+{
+	.container-lg
+	{
+		max-width:83.33333%;
+	}
+}
+@media only screen and (min-width:576px) and (max-width:1199px)
+{
+	.container
+	{
+		max-width:100%;
+	}
+}

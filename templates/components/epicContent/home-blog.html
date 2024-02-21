@@ -1,0 +1,43 @@
+<div class="section-heading">
+    <h2 class="section-title"><span>{{lang 'blog.home_page_title'}}</span></h2>
+    <p class="section-subtitle">{{lang 'blog.home_page_description'}}</p>
+</div>
+<div  class="blog-post-grid"
+        data-slick='{
+            "dots": false,
+            "arrows": true,
+            "infinite": true,
+            "slidesToShow": 3,
+            "slide": ".js-blog-slide",
+            "prevArrow": ".js-blog-prev-arrow",
+            "nextArrow": ".js-blog-next-arrow",
+            "slidesToScroll": 1,
+            "responsive": [
+                {
+                "breakpoint": 992,
+                "settings": {
+                    "slidesToScroll": 1,
+                    "slidesToShow": 2
+                    }
+                },
+                {
+                "breakpoint": 767,
+                "settings": {
+                    "slidesToScroll": 1,
+                    "slidesToShow": 1
+                    }
+                }
+                ]
+            }'
+>
+    {{#if blog.recent_posts.length '>' 3}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="js-blog-prev-arrow slick-prev slick-arrow"></button>
+    {{/if}}
+    {{#each blog.recent_posts}}
+        {{> components/blog/post_home  recent_posts=this columns=theme_settings.homepage_blog_posts_count}}
+    {{/each}}
+    {{#if blog.recent_posts.length '>' 3}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="js-blog-next-arrow slick-next slick-arrow"></button>
+    {{/if}}
+</div>
+<div class="more-post text-center mt-2"><a href="{{blog.url}}">{{lang 'blog.home_page_see_more'}} <i class="fal fa-long-arrow-right"></i></a></div>

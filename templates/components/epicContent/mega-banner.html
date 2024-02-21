@@ -1,0 +1,56 @@
+<section class="mega-banner mb-spacing-{{theme_settings.banner-column-spacing}}">
+    <div class="{{#if theme_settings.fullwidth-mega-banner}}container-fluid{{else}}container{{/if}}{{#if theme_settings.banner-column-spacing '==' '0'}} p-0{{/if}}">
+        <div class="row{{#if theme_settings.banner-column-spacing '==' '0'}} no-gutters{{/if}}">
+            {{#if theme_settings.epic_content_mega_banner_image_url_one "!==" ""}}
+            <div class="col-md-12">
+                <div class="widget-banner hvr-float">
+                    <a href="{{theme_settings.epic_content_mega_banner_link_url_one}}">
+                        <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_one}}" alt="" />
+                    </a>
+                </div>
+            </div>
+            {{/if}}
+            <div class="col-md-4">
+                {{#if theme_settings.epic_content_mega_banner_image_url_two "!==" ""}}
+                <div class="widget-banner hvr-float">
+                    <a href="{{theme_settings.epic_content_mega_banner_link_url_two}}">
+                        <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_two}}" alt="" />
+                    </a>
+                </div>
+                {{/if}}
+                {{#if theme_settings.epic_content_mega_banner_image_url_three "!==" ""}}
+                <div class="widget-banner hvr-float">
+                    <a href="{{theme_settings.epic_content_mega_banner_link_url_three}}">
+                        <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_three}}" alt="" />
+                    </a>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-md-4">
+                {{#if theme_settings.epic_content_mega_banner_image_url_four "!==" ""}}
+                <div class="widget-banner hvr-float">
+                    <a href="{{theme_settings.epic_content_mega_banner_link_url_four}}">
+                        <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_four}}" alt="" />
+                    </a>
+                </div>
+                {{/if}}
+                {{#if theme_settings.epic_content_mega_banner_image_url_five "!==" ""}}
+                <div class="widget-banner hvr-float">
+                    <a href="{{theme_settings.epic_content_mega_banner_link_url_five}}">
+                        <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_five}}" alt="" />
+                    </a>
+                </div>
+                {{/if}}
+            </div>
+            <div class="col-md-4">
+                {{#if theme_settings.epic_content_mega_banner_image_url_six "!==" ""}}
+                <div class="widget-banner hvr-float">
+                    <a href="{{theme_settings.epic_content_mega_banner_link_url_six}}">
+                        <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_six}}" alt="" />
+                    </a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>

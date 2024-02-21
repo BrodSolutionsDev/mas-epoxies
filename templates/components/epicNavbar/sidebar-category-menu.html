@@ -1,0 +1,130 @@
+<div class="container sc-menu-container">
+	<div class="row align-items-center">
+		<div class="col-md-3 nc-button-col p-0">
+				<a class="nc-button" href="javascript:void(0);"><i class="fal fa-bars"></i>
+ Shop by Category</a>
+			<div class="sc-navmenu">
+                {{#if theme_settings.mega-menu}}
+    				<nav class="navPages nav-with-mm {{theme_settings.column-per-row}}">
+    					<ul class="navPages-list">
+    				        {{#each categories}}
+    				            <li class="navPages-item">
+                                    {{> components/epicNavbar/default-nav-item theme_settings=../theme_settings}}
+    			                </li>
+    				        {{/each}}
+    				    </ul>
+    				</nav>
+                {{else}}
+                    <nav class="navPages nav-without-mm">
+                        <ul class="navPages-list">
+                            {{#each categories}}
+                                <li class="navPages-item">
+                                    {{> components/common/navigation-list-alternate}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </nav>
+                {{/if}}
+			</div>
+		</div>
+        {{#unless theme_settings.hide_content_navigation}}
+    		<div class="col-md">
+                <nav class="hws-pages-menu navPages">
+                    <ul>
+                        {{#each pages}}
+                            <li class="navPages-item navPages-item-page">
+                                {{#if children}}
+                                <a class="navPages-action has-subMenu" href="{{url}}" data-collapsible="navPages-index{{@index}}">{{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
+                                <div class="navPage-subMenu" id="navPages-index{{@index}}" aria-hidden="true" tabindex="-1">
+                                    <ul class="navPage-subMenu-list">
+                                        {{#each children}}
+                                        <li class="navPage-subMenu-item">
+                                            <a class="navPage-subMenu-action navPages-action" href="{{url}}">{{name}}</a>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                                {{else}}
+                                    <a class="navPages-action" href="{{url}}">{{name}}</a>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                </nav>
+    		</div>
+        {{/unless}}
+        <div class="col-md-auto ml-auto">
+            <div class="nav-user-item">
+                <a class="nu-button" href="javascript:void(0)">{{#if customer}}<span>Hi,</span> {{customer.name}}{{else}}<span>{{lang 'common.login'}}</span> {{lang 'common.account'}}{{/if}} <i class="fal fa-angle-down"></i></a>
+                <ul class="nu-item-dropdown">
+                    {{#if customer}}
+                    <li>
+                        <a href="{{urls.account.orders.all}}">{{lang 'account.nav.orders'}}</a>
+                    </li>
+                    {{#if settings.returns_enabled}}
+                        <li>
+                            <a href="{{urls.account.returns}}">{{lang 'account.nav.returns'}}</a>
+                        </li>
+                    {{/if}}
+                    <li>
+                        <a href="{{urls.account.inbox}}">{{lang 'account.mobile_nav.messages'}}</a>
+                    </li>
+                    <li>
+                        <a href="{{urls.account.addresses}}">{{lang 'account.nav.addresses'}}</a>
+                    </li>
+                    {{#if settings.show_payment_methods}}
+                        <li>
+                            <a href="{{urls.account.payment_methods.all}}">{{lang 'account.nav.payment_methods'}}</a>
+                        </li>
+                    {{/if}}
+                    <li>
+                        <a href="{{urls.account.wishlists.all}}">{{lang 'account.mobile_nav.wishlists'}}</a>
+                    </li>
+                    <li>
+                        <a href="{{urls.account.recent_items}}">{{lang 'account.nav.recently_viewed'}}</a>
+                    </li>
+                    <li>
+                        <a href="{{urls.account.details}}">{{lang 'account.nav.settings'}}</a>
+                    </li>
+                    <li>
+                        <a href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+                    </li>
+                    {{else}}
+                        <li>
+                            <a href="{{urls.auth.login}}">{{lang 'common.login'}}</a>
+                        </li>
+                        {{#if settings.account_creation_enabled}}
+                            <li class="signup">
+                                <a href="{{urls.auth.create_account}}">{{lang 'common.sign_up'}}</a>
+                            </li>
+                        {{/if}}
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            <div class="col col-auto">
+                <div class="cart-section">
+                    <div class="cart-items">
+                        <span class="cart-quantity cart-items-count">{{cart.quantity}}</span>
+                        <span class="icon">
+                            <svg><use xlink:href="#icon-shopping-cart" /></svg> 
+                        </span>
+                    </div>
+                    <div class="cart-subtotal">
+                        <a
+                            class="view-cart"
+                            data-cart-preview
+                            data-dropdown="cart-preview-dropdown"
+                            href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                           <span>My Cart</span><br><span class="ct-price">{{cart.grand_total.formatted}}</span> <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                        </a>
+                        <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+        {{/or}}
+        
+	</div>
+</div>

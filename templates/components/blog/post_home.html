@@ -1,0 +1,20 @@
+<div class="b-post js-blog-slide">
+    <div class="b-post-content">
+        {{#if recent_posts.thumbnail}}
+            <div class="blog-thumbnail" style="background-image:url({{getImage recent_posts.thumbnail 'defaultImage'}})"><a href="{{recent_posts.url}}"></a></div>
+        {{else}}
+            <div class="blog-thumbnail" style="background-image:url(https://via.placeholder.com/600x400?text=Blog)">
+                <a href="{{recent_posts.url}}"></a>
+            </div>
+        {{/if}}
+        <div class="b-post-desc">
+            <h3 class="b-post-title"><a href="{{recent_posts.url}}">{{recent_posts.title}}</a></h3>
+            <div class="b-blog-info">
+                <p class="b-post-author"><i class="fa fa-user" aria-hidden="true"></i> {{recent_posts.author}} <i class="fa fa-calendar" aria-hidden="true"></i>
+{{recent_posts.date_published}}</p>
+                <p class="b-blog-summary">{{recent_posts.summary}}&hellip;</p>
+            </div>
+            <a href="{{url}}" class="button button--primary">Read More</a>
+        </div>
+    </div>
+</div>

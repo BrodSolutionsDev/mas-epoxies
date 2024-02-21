@@ -1,0 +1,121 @@
+{{#if page_type '!==' 'default'}}
+    {{#if banners.bottom}}
+        {{#if settings.data_tag_enabled}}
+            <div class="banners" data-banner-location="bottom">
+                {{#each (limit banners.bottom_metadata 1)}}
+                    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                        <div data-event-type="promotion-click">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="banners" data-banner-location="bottom">
+                <div class="banner">
+                    {{{limit banners.bottom 1}}}
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+{{/if}}
+<footer class="site-footer">
+    {{> components/epicFooter/footer-about enabled=theme_settings.epic_footer_display_cta}}
+    <section class="footer-newsletter">
+        <div class="container">
+            {{> components/common/subscription-form}}
+        </div>
+    </section>
+    <section class="main-footer {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} brands-menu-show{{/and}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} col-md-6{{else}} col-md-4{{/and}} col-lg f-navigate-menu">
+                    <h4>{{lang 'footer.navigate'}}</h4>
+                    <ul class="footer-info-list">
+                        {{#each pages}}
+                            {{#if children}}
+                                {{#each children}}
+                                    <li>
+                                        <a href="{{url}}">{{name}}</a>
+                                    </li>
+                                {{/each}}
+                                {{else}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/if}}
+                        {{/each}}
+                        <li>
+                            <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} col-md-6{{else}} col-md-4{{/and}} col-lg column-lr-border f-categories-menu">
+                    <h4>{{lang 'footer.categories'}}</h4>
+                    <ul class="footer-info-list">
+                        {{#each categories}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+                <div class="col-12 col-md-6 col-lg column-r-border f-brands-menu">
+                    <h4>{{lang 'footer.brands'}}</h4>
+                    <ul class="footer-info-list">
+                        {{#each shop_by_brand}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                        {{/each}}
+                        <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                    </ul>
+                </div>
+                {{/and}}
+                <div class="col-12{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} col-md-6{{else}} col-md-4{{/and}} col-lg account-menu column-r-border">
+                    <h4>{{lang 'footer.account'}}</h4>
+                    {{> components/account/navigation}}
+                </div>
+                <div class="col-12 col-md-12 col-lg-4{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} col-xl-4{{else}} col-xl-5{{/and}} column-md-border">
+                    <h4>{{lang 'social.connect'}}</h4>
+                    <div class="footer-store-info">
+                        {{> components/epicFooter/footer-store-info}}
+                    </div>
+                    <div class="footer-social">
+                        {{> components/common/social-links}}
+                    </div>
+                    {{#if theme_settings.geotrust_ssl_common_name}}
+                        <div class="footer-geotrust-ssl-seal">
+                            {{> components/common/geotrust-ssl-seal}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div><!--row-->
+        </div>
+    </section>
+    {{#if settings.paypal_commerce_credit_message}}
+        <section class="copyright-info paypal-credit-section">
+            <div class="container text-center">
+                <p class="paypal-credit">{{nl2br settings.paypal_commerce_credit_message}}</p>
+            </div>
+        </section>
+    {{/if}}
+    <section class="copyright-info">
+        <div class="container">
+            <div class="row align-items-center">
+                {{#if theme_settings.show_copyright_footer}}
+                    <div class="col-12 col-lg-6">
+                        <p>&copy; copyright {{moment format="YYYY"}} {{settings.store_name}}.{{#if theme_settings.show_theme_credits}} Designed by <a href="https://www.epicshops.com/" target="_blank">epicShops</a>{{/if}}</p>
+                    </div>
+                {{/if}}
+                <div class="{{#if theme_settings.show_copyright_footer}}col-12 col-lg-6 text-right{{else}}col-12 text-center{{/if}}">
+                    {{> components/common/payment-icons}}
+                </div>
+            </div>
+        </div>
+    </section>
+  
+</footer>
+<a id="back-to-top" href="#" class="backtotop"><i class="fal fa-angle-up" aria-hidden="true"></i></a>
+</div>

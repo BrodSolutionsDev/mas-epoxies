@@ -1,0 +1,29 @@
+<div class="row{{#if theme_settings.banner-column-spacing '==' '0'}} no-gutters{{/if}}">
+    {{#if theme_settings.epic_content_mega_banner_image_url_one "!==" ""}}
+    <div class="col-12 col-md-6">
+        <div class="widget-banner">
+            <a href="{{theme_settings.epic_content_mega_banner_link_url_one}}">
+                <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_one}}" alt="" />
+            </a>
+        </div>
+    </div>
+    {{/if}}
+    {{#if theme_settings.epic_content_mega_banner_image_url_two "!==" ""}}
+    <div class="col-12 col-md-6">
+        <div class="widget-banner">
+            <a href="{{theme_settings.epic_content_mega_banner_link_url_two}}">
+                <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_two}}" alt="" />
+            </a>
+        </div>
+    </div>
+    {{/if}}
+    {{#if theme_settings.epic_content_mega_banner_image_url_three "!==" ""}}
+    <div class="col-12 col-md-12">
+        <div class="widget-banner">
+            <a href="{{theme_settings.epic_content_mega_banner_link_url_three}}">
+                <img class="img-responsive" src="{{getImage theme_settings.epic_content_mega_banner_image_url_three}}" alt="" />
+            </a>
+        </div>
+    </div>
+    {{/if}}
+</div>

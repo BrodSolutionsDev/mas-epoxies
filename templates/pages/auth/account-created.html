@@ -1,0 +1,11 @@
+{{#partial "page"}}
+    <section class="page">
+        <main class="page-content page-content--textCenter">
+            <h1 class="page-heading">{{lang 'create_account.created.heading'}}</h1>
+            <p style="background: #ebebeb; padding: 10px; border-radius: 5px; width: fit-content; margin-left: auto; margin-right: auto">Not sure where to find your MAS Rewards Dashboard from here? Not to worry! It's usually a little pop up in the bottom left-hand side of your screen that looks like this: <img style="width: auto; height: 40px; padding-left: 10px; box-shadow: none;" src="https://cdn11.bigcommerce.com/s-8rejm4fv6m/images/stencil/original/image-manager/maker-points.png?t=1671546527&_gl=1*1w4x1qn*_ga*MTkxMjc4NTk4OC4xNjQ1MzA0Nzcz*_ga_WS2VZYPC6G*MTY3MTU0NTQ1Ni42NzkuMS4xNjcxNTQ2MjA0LjU0LjAuMA.." alt="Maker Points logo"></p>
+            <p>{{{lang 'create_account.created.intro' store_name=settings.store_name email=customer.email}}}</p>
+            <a class="button button--primary" href="{{create_account.continue_url}}">{{lang 'create_account.created.continue'}}</a>
+        </main>
+    </section>
+{{/partial}}
+{{> layout/base}}

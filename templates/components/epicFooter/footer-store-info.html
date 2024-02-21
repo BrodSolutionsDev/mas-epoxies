@@ -1,0 +1,23 @@
+<div class="contact-info-column">
+	<span class="contact-info-icon">
+		<svg><use xlink:href="#icon-telephone" /></svg> 
+	</span>
+	<h4>{{lang 'footer.call_us'}}</h4>
+	<p><a href="tel:{{settings.phone_number}}">{{settings.phone_number}}</a></p>
+</div>
+{{#if theme_settings.epic_email_address}}
+<div class="contact-info-column">
+	<span class="contact-info-icon">
+		<svg><use xlink:href="#icon-email" /></svg>
+	</span>
+	<h4>{{lang 'footer.e_mail'}}</h4>
+	<p><a href="mailto:{{theme_settings.epic_email_address}}">{{theme_settings.epic_email_address}}</a></p>
+</div>
+{{/if}}
+<div class="contact-info-column">
+	<span class="contact-info-icon">
+		<svg><use xlink:href="#icon-location" /></svg>
+	</span>
+	<p>{{{settings.address}}}</p>
+</div>
+

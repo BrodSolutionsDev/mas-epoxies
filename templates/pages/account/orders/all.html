@@ -1,0 +1,35 @@
+---
+customer:
+    orders:
+        limit: 10
+---
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<h1 class="page-heading">{{lang 'account.orders.heading' }}</h1>
+{{> components/account/navigation account_page='orders'}}
+
+<main class="account account--fixed">
+    <div class="account-head">
+        {{#if customer.store_credit.value '>' 0}}
+            <div class="alertBox alertBox--storeCredit">
+                {{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}
+            </div>
+        {{/if}}
+    </div>
+    <div class="account-body">
+        <section class="account-content">
+            <p style="background: #ebebeb; padding: 10px; border-radius: 5px; width: fit-content;">Not sure where to find your MAS Rewards Dashboard from here? Not to worry! It's usually a little pop up in the bottom left-hand side of your screen that looks like this: <img style="width: auto; height: 40px; padding-left: 10px; box-shadow: none;" src="https://cdn11.bigcommerce.com/s-8rejm4fv6m/images/stencil/original/image-manager/maker-points.png?t=1671546527&_gl=1*1w4x1qn*_ga*MTkxMjc4NTk4OC4xNjQ1MzA0Nzcz*_ga_WS2VZYPC6G*MTY3MTU0NTQ1Ni42NzkuMS4xNjcxNTQ2MjA0LjU0LjAuMA.." alt="Maker Points logo"></p>
+            {{#if customer.orders.length}}
+                {{> components/account/orders-list orders=customer.orders}}
+                {{> components/common/small-paginator pagination.orders}}
+            {{else}}
+                {{> components/common/alert/alert-info (lang 'account.orders.none')}}
+            {{/if}}
+        </section>
+    </div>
+</main>
+
+{{/partial}}
+{{> layout/base}}

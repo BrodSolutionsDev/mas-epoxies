@@ -1,0 +1,11 @@
+<div class="section-heading">
+	<h2 class="section-title">{{lang 'products.top' }}</h2>
+</div>
+
+<ul data-equalizer class="productGrid productGrid--maxCol{{ columns }}" data-product-type="top_sellers"  {{#if settings.data_tag_enabled}} data-list-name="Most Popular Products" {{/if}}>
+{{#each products}}
+<li class="product">
+    {{>components/products/card settings=../settings show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+</li>
+{{/each}}
+</ul>

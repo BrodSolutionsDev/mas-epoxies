@@ -1,0 +1,192 @@
+{{#partial "head"}}
+
+{{{ checkout.checkout_head }}}
+{{{ stylesheet '/assets/css/optimized-checkout.css' }}}
+{{ getFontsCollection }}
+
+<script type="text/javascript">
+    window.language = {{{langJson 'optimized_checkout'}}};
+</script>
+
+{{{head.scripts}}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<style>
+#logoImage {
+    max-width: 250px;
+}
+</style>
+<style>
+    .checkoutHeader {
+        max-width: 92.30769rem;
+        margin: 0 auto;
+        display: flex;
+        padding: 20px;
+    }
+    .po-box-note {
+        width: fit-content;
+        margin: 0 auto;
+        padding: 10px;
+        background: #fff;
+        color: #da291c;
+        border-radius: 4px;
+        max-width: 500px;
+        text-align: left;
+    }
+    .po-box-note p {
+        margin-bottom: 10px;
+    }
+    .po-box-note p:last-of-type {
+        margin-bottom: 0;
+    }
+    .po-box-note p a {
+        text-decoration: underline;
+    }
+    .po-box-note p a:hover {
+        text-decoration: none;
+    }
+    @media only screen and (max-width: 800px) {
+        .checkoutHeader {
+            flex-direction: column;
+        }
+        .po-box-note {
+            max-width: 80%;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .po-box-note {
+            max-width: 100%;
+        }
+    }
+</style>
+{{/partial}}
+
+{{#partial "page"}}
+<header class="checkoutHeader optimizedCheckout-header">
+    <div class="checkoutHeader-content">
+        <h1 class="is-srOnly">{{lang 'checkout.title'}}</h1>
+        <h2 class="checkoutHeader-heading">
+            <a class="checkoutHeader-link" href="{{urls.home}}">
+                {{#if checkout.header_image}}
+                    <img alt="{{settings.store_logo.title}}" class="checkoutHeader-logo" id="logoImage" src="{{ checkout.header_image }}"/>
+                {{ else }}
+                    <span class="header-logo-text">{{settings.store_logo.title}}</span>
+                {{/if}}
+            </a>
+        </h2>
+    </div>
+    <div class="po-box-note">
+        <p><strong>NO PO BOXES Allowed:</strong> Please list a non-PO box address for shipping address.</p>
+        <p><strong>INTERNATIONAL:</strong> At this time we are unable to process online. Please contact Customer Support for placing bulk orders at <a href="mailto:hello@masepoxies.com">hello@masepoxies.com</a></p>
+        <p><strong>Shipping Zip Code must be Billing Zip Code</strong><br>In an effort to combat payment related issues, <strong>we require the billing and shipping address zip codes to match</strong>. If you require shipment to a location that differs from the billing address, please contact our customer support at (833) 769-9776 for assistance.</p>
+    </div>
+</header>
+
+{{{ checkout.checkout_content }}}
+<script>
+    (function(win) {
+        'use strict';
+        var listeners = [], 
+        doc = win.document, 
+        MutationObserver = win.MutationObserver || win.WebKitMutationObserver,
+        observer;
+        function ready(selector, fn) {
+            // Store the selector and callback to be monitored
+            listeners.push({
+                selector: selector,
+                fn: fn
+            });
+            if (!observer) {
+                // Watch for changes in the document
+                observer = new MutationObserver(check);
+                observer.observe(doc.documentElement, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+            // Check if the element is currently in the DOM
+            check();
+        }
+        function check() {
+            // Check the DOM for elements matching a stored selector
+            for (var i = 0, len = listeners.length, listener, elements; i < len; i++) {
+                listener = listeners[i];
+                // Query for elements matching the specified selector
+                elements = doc.querySelectorAll(listener.selector);
+                for (var j = 0, jLen = elements.length, element; j < jLen; j++) {
+                    element = elements[j];
+                    // Make sure the callback isn't invoked with the 
+                    // same element more than once
+                    if (!element.ready) {
+                        element.ready = true;
+                        // Invoke the callback with the element
+                        listener.fn.call(element, element);
+                    }
+                }
+            }
+        }
+        // Expose `ready`
+        win.ready = ready; 
+    })(this);    
+    // prevent numbers from being in the first name field
+    ready('#firstNameInput', function(element) {
+        $('#firstNameInput').change(function(){
+            var firstNameInput = $('#firstNameInput')[0].value;
+            if(checkZip(firstNameInput)){
+                $('.dynamic-form-field--firstName').append("<div class='error-message_firstName' style='color:red;font-size:14px;'>First name cannot contain <u>ANY</u> numbers: <b style='color:black;'>"+firstNameInput+"</b>, must remove.</div>");
+                $('#checkout-shipping-continue').hide();
+            } else {
+                $('.error-message_firstName').remove();
+                $('#checkout-shipping-continue').show();
+            }
+        });
+    });
+    // prevent numbers from being in the last name field
+    ready('#lastNameInput', function(element) {
+        $('#lastNameInput').change(function(){
+            var lastNameInput = $('#lastNameInput')[0].value;
+            if(checkZip(lastNameInput)){
+                $('.dynamic-form-field--lastName').append("<div class='error-message_lastName' style='color:red;font-size:14px;'>Last name cannot contain <u>ANY</u> numbers: <b style='color:black;'>"+lastNameInput+"</b>, must remove.</div>");
+                $('#checkout-shipping-continue').hide();
+            } else {
+                $('.error-message_lastName').remove();
+                $('#checkout-shipping-continue').show();
+            }
+        });
+    });
+    // prevent numbers from being in the city field
+    ready('#cityInput', function(element) {
+        $('#cityInput').change(function(){
+            var cityInput = $('#cityInput')[0].value;
+            if(checkZip(cityInput)){
+                $('.dynamic-form-field--city').append("<div class='error-message_city' style='color:red;font-size:14px;'>City cannot contain <u>ANY</u> numbers: <b style='color:black;'>"+cityInput+"</b>, must remove.</div>");
+                $('#checkout-shipping-continue').hide();
+            } else {
+                $('.error-message_city').remove();
+                $('#checkout-shipping-continue').show();
+            }
+        });
+    });
+    // make sure billing zipcode is exactly the same as the shipping zip code
+    ready('#postCodeInput', function(element) {
+        $('#billingAddresses').remove();
+        $('#postCodeInput').change(function(){
+            var shipSavedZip = $('.postal-code')[0].innerHTML.slice(0,-3);
+            var billEnteredZip = $('#postCodeInput')[0].value;
+            if(billEnteredZip !== shipSavedZip){
+                $('.dynamic-form-field--postCode').append("<p class='error-message_postcode' style='color:red;font-size:12px;'>Postal Code must be: <b style='color:black;'>"+shipSavedZip+"</b></p>");
+                $('#checkout-billing-continue').hide();
+            } else {
+                $('.error-message_postcode').remove();
+                $('#checkout-billing-continue').show();
+            }
+        });   
+    });
+    function checkZip(string) {
+        return /[0-9]/g.test(string);
+    }
+</script>
+{{{ footer.scripts }}}
+
+{{/partial}}
+
+{{> layout/empty}}

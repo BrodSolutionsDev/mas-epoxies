@@ -1,0 +1,337 @@
+{{#partial "page"}}
+<main class="page">
+  {{{region name="page_builder_content"}}}
+
+  <div class="page-content page-content--centered">
+    {{{page.content}}}
+    <div class="hero">
+      <h1>Product Resources</h1>
+      <h2>Find Technical Data Bulletins and Safety Data Sheets</h2>
+    </div>
+    <div id="technical-document-page-product" class="custom-fields">
+      <div class="flex">
+        <div class="flex-75">
+          <label for="technical-selection"
+            >Select MAS Product, then click Get Resources</label
+          >
+          <select id="technical-selection" name="tech-prod-docs"></select>
+        </div>
+        <div class="flex-25" style="float: left">
+          <button class="button button--primary" id="get-technical">
+            Get Resources
+          </button>
+        </div>
+      </div>
+
+      <div id="technical-warranty">
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+{{/partial}}
+{{> layout/base}}
+
+
+<script>
+  var productIDCalculators = [
+        {
+            "id": 149,
+            "name": "1.5 oz. Fiberglass Mat",
+            "warranty": ""
+        },
+        {
+            "id": 150,
+            "name": "1708 Biaxial Cloth",
+            "warranty": ""
+        },
+        {
+            "id": 148,
+            "name": "320 Clear Marine Hardener",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_320_MARINE_EPOXY_CLEAR_HARDENER_SDS.pdf\">320 Clear Marine Hardener</a></p>"
+        },
+        {
+            "id": 142,
+            "name": "510 Fast Marine Hardener",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_510_MARINE_EPOXY_FAST_HARDENER_SDS.pdf\">510 Fast Marine Hardener</a></p>"
+        },
+        {
+            "id": 131,
+            "name": "520 Slow Marine Hardener",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_520_MARINE_EPOXY_SLOW_HARDENER_SDS.pdf\">520 Slow Marine Hardener sds</a></p>"
+        },
+        {
+            "id": 140,
+            "name": "6 oz. Fiberglass Cloth",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_FIBERGLASS_SDS.pdf\">Fiberglass Cloth SDS</a></p>"
+        },
+        {
+            "id": 122,
+            "name": "60 cc Syringes",
+            "warranty": ""
+        },
+        {
+            "id": 128,
+            "name": "9” Nylon Roller Cover",
+            "warranty": ""
+        },
+        {
+            "id": 152,
+            "name": "Aqua Zone",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_AQUA_ZONE_HARDENER_SDS.pdf\">Aqua Zone Hardener SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_AQUA_ZONE_RESIN_SDS.pdf\">Aqua Zone Resin SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_Aqua_Zone_TDB.pdf\">Aqua Zone TDB</a></p>"
+        },
+        {
+            "id": 114,
+            "name": "Art Pro Epoxy",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-ART-PRO-RESIN-SDS.pdf\">MAS Art Pro Resin</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-ART-PRO-HARDENER-SDS.pdf\"> MAS Art Pro Hardener</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-Deep-Pour-TDB.pdf\">Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 159,
+            "name": "Bristol Finish Accelerator for Traditional Amber",
+            "warranty": ""
+        },
+        {
+            "id": 153,
+            "name": "Bristol Finish Catalyst Part B for Traditional Amber 4 oz",
+            "warranty": ""
+        },
+        {
+            "id": 156,
+            "name": "Bristol Finish Catalyst Part B for Traditional Amber, 16oz",
+            "warranty": ""
+        },
+        {
+            "id": 160,
+            "name": "Bristol Finish Satin Additive for Traditional Amber",
+            "warranty": ""
+        },
+        {
+            "id": 157,
+            "name": "Bristol Finish Thinner for Traditional Amber",
+            "warranty": ""
+        },
+        {
+            "id": 155,
+            "name": "Bristol Finish Traditional Amber Gallon Kit",
+            "warranty": ""
+        },
+        {
+            "id": 154,
+            "name": "Bristol Finish Traditional Amber Quart Kit",
+            "warranty": ""
+        },
+        {
+            "id": 145,
+            "name": "Bristol Finish Traditional Amber Urethane Varnish",
+            "warranty": ""
+        },
+        {
+            "id": 158,
+            "name": "Bristol Finish Tropical Reducer for Traditional Amber",
+            "warranty": ""
+        },
+        {
+            "id": 136,
+            "name": "Bristol Finish UV Clear Urethane Varnish",
+            "warranty": ""
+        },
+        {
+            "id": 120,
+            "name": "Calibrated Pump Set",
+            "warranty": ""
+        },
+        {
+            "id": 130,
+            "name": "Cell-O-Fill",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_CELL-O-FILL_SDS.pdf\">Cell-O-Fill SDS</a></p>"
+        },
+        {
+            "id": 135,
+            "name": "Colloidal Silica",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_COLLOIDAL_SILICA_SDS.pdf\">Colloidal Silica SDS</a></p>"
+        },
+        {
+            "id": 139,
+            "name": "Crackzilla",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_CRACKZILLA_RESIN_SDS.pdf\">Crackzilla Resin SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_CRACKZILLA_HARDENER_SDS.pdf\">Crackzilla Hardener SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_Crackzilla_TDB.pdf\">Crackzilla TDB</a></p>"
+        },
+        {
+            "id": 113,
+            "name": "Deep Pour Epoxy",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-DEEP-POUR-RESIN-SDS.pdf\">Deep Pour Epoxy Resin</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-DEEP-POUR-HARDENER-SDS.pdf\"> Hardener</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-Deep-Pour-TDB.pdf\">Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 129,
+            "name": "Deep Pour X Epoxy Resin",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-DEEP-POUR-X-RESIN-SDS.pdf\">MAS Deep Pour X Resin SDS</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-DEEP-POUR-X-HARDENER-SDS.pdf\">MAS Deep Pour X Hardener</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-Deep-Pour-X-TDB.pdf\">Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 151,
+            "name": "Dispensing Guns",
+            "warranty": ""
+        },
+        {
+            "id": 143,
+            "name": "Fairing Compound",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_FAIRING_COMPOUND_RESIN_SDS.pdf\">Fairing Compound Resin SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_FAIRING_COMPOUND_HARDENER_SDS.pdf\">Fairing Compound Hardener SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_Fairing_Compound_TDB.pdf\">Fairing Compound TDB</a></p>"
+        },
+        {
+            "id": 118,
+            "name": "FLAG Resin",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-FLAG-RESIN-SDS.pdf\">FLAG Epoxy Resin</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-FLAG_Fast-Medium-Slow-TDB.pdf\"> Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 134,
+            "name": "Gluzilla",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_GLUZILLA_GREEN_RESIN_SDS.pdf\">Gluzilla Epoxy SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_GLUZILLA_HARDENER_SDS.pdf\">Gluzilla Hardener SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_Gluzilla_TDB.pdf\">Gluzilla TDB</a></p>"
+        },
+        {
+            "id": 146,
+            "name": "Gluzilla Fast",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_GLUZILLA_FAST_HARDENER_SDS.pdf\">Gluzilla Fast SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_Gluzilla_Fast_TDB.pdf\"> Gluzilla Fast TDB</a></p>"
+        },
+        {
+            "id": 144,
+            "name": "Handy Repair Kit",
+            "warranty": ""
+        },
+        {
+            "id": 117,
+            "name": "Low Viscosity Epoxy Resin",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-LV-RESIN-SDS.pdf\">Low Viscosity Resin</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-LV_Fast-Medium-Slow-TDB.pdf\"> Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 147,
+            "name": "Milled Fibers",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_MILLED_FIBERS_SDS.pdf\">Milled Fibers SDS</a></p>"
+        },
+        {
+            "id": 115,
+            "name": "Mixing Cups",
+            "warranty": ""
+        },
+        {
+            "id": 125,
+            "name": "Mixing Sticks",
+            "warranty": ""
+        },
+        {
+            "id": 126,
+            "name": "Non-Blushing Fast Hardener",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-FAST-HARDENER-SDS.pdf\">MAS Fast Hardener</a></p>"
+        },
+        {
+            "id": 119,
+            "name": "Non-Blushing Medium Hardener",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-MEDIUM-HARDENER-SDS.pdf\">Medium Hardener</a></p>"
+        },
+        {
+            "id": 121,
+            "name": "Non-Blushing Slow Hardener",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-SLOW-HARDENER-SDS.pdf\">Slow Hardener</a></p>"
+        },
+        {
+            "id": 138,
+            "name": "Notched Trowel",
+            "warranty": ""
+        },
+        {
+            "id": 116,
+            "name": "Penetrating Epoxy Sealer",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-PENETRATING-EPOXY-SEALER-RESIN-SDS.pdf\">Penetrating Epoxy Sealer Resin</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-PENETRATING-EPOXY-SEALER-HARDENER-SDS.pdf\"> Penetrating Epoxy Sealer Hardener</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-PES-TDB.pdf\">Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 141,
+            "name": "Phenolic Microballoons",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_PHENOLIC_MICROBALLOONS_SDS.pdf\">Phenolic Microballoons SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_PHENOLIC_MICROBALLOONS_SDS_%28FRENCH%29.pdf\"> Phenolic Micoroballoons SDS (French)</a></p>"
+        },
+        {
+            "id": 124,
+            "name": "Plastic Spreader (3 pack)",
+            "warranty": ""
+        },
+        {
+            "id":168,
+            "name": "Resin Ocean Art White Pigment",
+            "warranty": "<p><a class=\"sds\" href=\"/content/pdf/MAS-Ocean-Art-Resin-Pigment-White-2022.pdf\"> Resin Ocean Art White Pigment</a></p>"
+        },
+        {
+            "id": 112,
+            "name": "Table Top Pro Epoxy",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-TABLE-TOP-PRO-RESIN-SDS.pdf\">Table Top Epoxy Resin</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-TABLE-TOP-PRO-HARDENER-SDS.pdf\">Table Top Hardener</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-Table-Top-Pro-TDB.pdf\">Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 123,
+            "name": "Table Top Pro LTD",
+            "warranty": "<p><a class=\"tds\" href=\"/content/pdf/MAS-TABLE-TOP-PRO-RESIN-SDS.pdf\">Tabletop Pro Safety Data Sheet Resin</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-TABLE-TOP-PRO-HARDENER-SDS.pdf\">Tabletop Pro Safety Data Sheet Hardener</a></p>\n<p><a class=\"sds\" href=\"/content/pdf/MAS-Table-Top-Pro-TDB.pdf\">Tabletop Pro Technical Data Bulletin</a></p>"
+        },
+        {
+            "id": 127,
+            "name": "Traditional Marine Resin",
+            "warranty": ""
+        },
+        {
+            "id": 132,
+            "name": "Wood Flour",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_WOOD_FLOUR_SDS.pdf\">Wood Flour SDS</a></p>"
+        },
+        {
+            "id": 133,
+            "name": "Woodzilla",
+            "warranty": "<p><a class=\"tds\" href=\"/content/updatedpdf/MAS_WOODZILLA_RESIN_SDS.pdf\">Woodzilla Epoxy SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_WOODZILLA_HARDENER_SDS.pdf\">Woodzilla Hardener SDS</a></p>\n<p><a class=\"sds\" href=\"/content/updatedpdf/MAS_Woodzilla_TDB.pdf\">Woodzilla TDB</a></p>"
+        }
+    ];
+    window.onload = function (){
+   
+   var productTechDocSelection = document.getElementById("technical-selection");
+   
+   var productArrayWarranty = productIDCalculators.reduce((productArrayWarranty, value) => {
+  if (value.warranty) {
+    productArrayWarranty.push({"id":value.id,"name":value.name});
+  }
+  return productArrayWarranty;
+}, []);
+
+var techDocOptions = productArrayWarranty.map(element => `<option value=${element.id}>${element.name}</option>`).join('\n');
+   productTechDocSelection.innerHTML = techDocOptions;
+
+};
+</script>
+<script>
+    $("#get-technical").click(function () {
+      var technicalProductID = $("#technical-selection").val();
+      fetchwarrantyfield(technicalProductID);
+    });
+    </script>
+    <script>
+    function fetchwarrantyfield(technicalProductID){
+       fetch("/graphql", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+         Authorization: "Bearer {{ settings.storefront_api.token }}",
+       },
+       body: JSON.stringify({
+         query: `
+         query SingleProduct {
+site {
+product(entityId: ${technicalProductID}) {
+ entityId
+ name
+ warranty
+ path
+}
+}
+}
+                 `,
+       }),
+     })
+       .then((res) => res.json())
+       .then((result) => $("#technical-warranty").html("<h6>Click to Download PDF</h6>" + result.data.site.product.warranty + "<h6>Visit Product Page</h6>" + "<p><a class='button button--primary' href='"+result.data.site.product.path+"'>"+result.data.site.product.name+"</a></p>"));        
+       }
+    
+
+</script>
+
+

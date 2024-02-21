@@ -1,0 +1,17 @@
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<main class="page">
+    <div class="container">
+        <div class="e-404">
+            <h4>{{lang 'page_not_found.page_heading'}}</h4>
+            <h1><span>4</span><span>0</span><span>4</span></h1>
+            <h3>{{lang 'page_not_found.message'}}</h3>
+            <a class="button button--primary" href="{{urls.home}}">Back To Home</a>
+        </div>
+    </div>
+</main>
+
+{{/partial}}
+{{> layout/base}}

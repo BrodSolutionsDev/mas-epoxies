@@ -1,0 +1,216 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+        summary: 70
+---
+{{#partial "hero"}}
+{{{region name="home_below_menu"}}}
+    {{#all theme_settings.display-mega-banner theme_settings.mega-banner-carousel}}
+        <section class="mega-banner mega-banner-carousel mb-spacing-{{theme_settings.banner-column-spacing}}">
+            <div class="{{#if theme_settings.fullwidth-mega-banner}}container-fluid{{#if theme_settings.banner-column-spacing '==' '0'}} p-0{{/if}}{{else}}container{{/if}}">
+                <div class="row{{#if theme_settings.banner-column-spacing '==' '0'}} no-gutters{{/if}}">
+                    <div class="col-lg-7 mb-carousel">
+                        {{#if carousel}}
+                            {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+                        {{/if}}
+                    </div>
+                    <div class="col-lg-5 mbc-1">
+                        {{> components/epicContent/mega-banner-with-carousel-1}}
+                    </div>
+                    <div class="col-lg-12 mbc-2">
+                        {{> components/epicContent/mega-banner-with-carousel-2}}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {{else}}
+        {{#if carousel}}
+            {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+        {{/if}}
+    {{/all}}
+	{{{region name="home_below_carousel"}}}
+{{/partial}}
+
+{{#partial "page"}}
+    {{#each shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+    <div class="main full container">
+        {{#if theme_settings.mega-banner-carousel "==" ""}}
+            {{#if theme_settings.display-mega-banner}}
+                {{> components/epicContent/mega-banner}}
+            {{/if}}
+        {{/if}}
+
+        {{#if products.featured}}
+        <section class="featured-product-section home-section">
+            <div class="container">
+                {{#if theme_settings.home-featured-style "==" "slider"}}
+                    {{> components/epicContent/home-featured-slider products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+                {{else}}
+                    {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+                {{/if}}
+            </div>
+        </section>
+        {{/if}}
+{{{region name="home_below_featured_products"}}}
+        {{#if theme_settings.show-homepage-category-thumbs}}
+             <section class="categories-box-section">
+                <div class="container">
+                    <ul class="featured-categories">
+                        {{#if categories}}
+                            {{#each (limit categories 4)}}
+                                {{#if image}}
+                                    <li>
+                                        <div class="category-box">
+                                            {{> components/common/responsive-img
+                                                image=image
+                                                fallback_size=theme_settings.zoom_size
+                                                lazyload=theme_settings.lazyload_mode
+                                            }}
+                                            <div class="category-content">
+                                                <h4>{{name}}</h4>
+                                                <a href="{{url}}" class="button button--small button--primary">{{lang 'home.category_thumbs.shop_now'}}</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
+                    </ul>
+                </div>
+            </section>
+        {{/if}}
+
+        {{#if products.top_sellers}}
+        <section class="top-product-section home-section">
+            <div class="container">
+                {{> components/products/top products=products.top_sellers columns=theme_settings.homepage_top_products_column_count}}
+            </div>
+        </section>
+        {{/if}}
+{{{region name="home_below_top_products"}}}
+
+        {{#if products.new}}
+        <section class="new-product-section home-section">
+            <div class="container">
+                {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
+            </div>
+        </section>
+        {{/if}}
+{{{region name="home_below_new_products"}}}
+        {{#if theme_settings.display-testimonial-section}}
+            {{#if banners.bottom}}
+                {{> components/epicContent/home-testimonials }}
+            {{/if}}
+        {{/if}}
+        
+        {{#if theme_settings.display-content-snippets}}
+        <section class="content-snippet-section">
+            {{> components/epicContent/home-content-snippet}}
+        </section>
+        {{/if}}
+        {{#if theme_settings.display-blog-section}}
+            <section class="blog-section home-section">
+                <div class="container">
+                    {{> components/epicContent/home-blog}}
+                </div>
+            </section>
+        {{/if}}
+
+        <!-- Custom Homepage Elements -->
+
+        <div id="home-buckets">
+            <h2>MAS Epoxies Uses</h2>
+          <div class="flex">
+                <div class="flex-33">
+                    <a href="/product-category/specialty-woodworking-products/"> <img
+                            src="https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/wood.png?t=1648234736&_gl=1*jcbjed*_ga*MTkxMjc4NTk4OC4xNjQ1MzA0Nzcz*_ga_WS2VZYPC6G*MTY0ODIzMzc5Ny4xMTkuMS4xNjQ4MjM0NjkzLjE5"></a>
+                    <h4>Woodworking</h4>
+                    <p>Sealing, Casting and Clear Coating</p>
+                    <a class="button button--primary" href="/product-category/specialty-woodworking-products/">Shop Now</a>
+                </div>
+                <div class="flex-33">
+                    <a href="/product-category/art-epoxy/"><img
+                            src="https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/art.png?t=1648234735&_gl=1*1ansbdl*_ga*MTkxMjc4NTk4OC4xNjQ1MzA0Nzcz*_ga_WS2VZYPC6G*MTY0ODIzMzc5Ny4xMTkuMS4xNjQ4MjM0NjkzLjE5"></a>
+                    <h4>Art</h4>
+                    <p>Ocean pours, Molds and Clear Coating</p>
+                    <a class="button button--primary" href="/product-category/art-epoxy/">Shop Now</a>
+                </div>
+                <div class="flex-33">
+                    <a href="/product-category/non-blushing-system/"><img
+                            src="https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/home-structural-tiny.png"></a>
+                    <h4>Structural/Repair</h4>
+                    <p>Gluing, Bonding, Glassing and more</p>
+                    <a class="button button--primary" href="/product-category/non-blushing-system/">Shop Now</a>
+                </div>
+            </div>
+
+            <!--<a href="/product/deep-pour-x-epoxy-resin">-->
+            <!--    <div id="home-dpx">-->
+            <!--        <div class="flex">-->
+            <!--            <div class="flex-50">-->
+            <!--                <h2>MAS Deep Pour X</h2>-->
+            <!--                <h3>The Ultimate Deep Pour Epoxy Resin</h3>-->
+            <!--                <h3>3" Pour Capacity | Demold in 24 Hours</h3>-->
+            <!--            </div>-->
+            <!--            <div class="flex-50">-->
+            <!--                <div class="flex-video" data-embed-youtube="PFqMTZ0qXAA"></div>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</a>-->
+        </div>
+
+        {{{region name="home_middle"}}}
+
+        <!-- <div id="home-meet">-->
+        <!--    <div class="flex">-->
+        <!--        <div class="flex-50">-->
+        <!--            <h3>Meet Kelly</h3>-->
+        <!--            <h5>Our newest MAS team member and content creation specialist. Learn more about her journey with art and epoxy.</h5>-->
+        <!--            <a class="button button--default" href="/kellys-corner">Visit Kelly's Corner</a>-->
+        <!--        </div>-->
+        <!--        <div class="flex-50">-->
+        <!--            <img class="box-border" src="https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/kelly-johnson-mas-sweatshirt-tiny.jpeg" title="Kelly is MAS sweatshirt">-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+
+        <div id="home-make-today">
+            <h2>What do you want to make today?</h2>
+        <div class="flex">
+            <div class="flex-50">
+                <div class="flex-video" data-embed-youtube="UTy1nS_wW5w"></div>
+            </div>
+            <div class="flex-50">
+                <div class="flex-video" data-embed-youtube="-g18ECAhq4s"></div>
+            </div>
+        </div>
+        
+        </div>
+
+        
+
+    </div>
+{{/partial}}
+{{> layout/base}}
+<script async>
+    window.onload = setTimeout(function loadYouTubePlayers(){
+    var youtube = document.querySelectorAll( ".flex-video" );
+    for (var i = 0; i < youtube.length; i++) {
+        var tubeid = youtube[i].getAttribute('data-embed-youtube');
+        var tube = '<iframe src="https://www.youtube-nocookie.com/embed/'+tubeid+'?rel=0" width="560" height="315" frameborder="0" allowfullscreen=""></iframe>';
+        youtube[i].innerHTML +=tube;
+  }
+    }, 1000);
+  </script>

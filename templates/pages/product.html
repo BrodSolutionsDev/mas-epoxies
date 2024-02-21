@@ -1,0 +1,92 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{inject 'productId' product.id}}
+
+{{#partial "page"}}
+
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+        <div itemscope itemtype="http://schema.org/Product">
+            {{#if theme_settings.show_product_images_popup}}
+                {{> components/epicContent/products/product-view-gallery schema=true  }}
+            {{else}}
+                {{> components/products/product-view schema=true  }}
+            {{/if}}
+
+        {{{region name="product_below_content"}}}
+
+        {{#if product.videos.list.length}}
+            {{> components/products/videos product.videos}}
+        {{/if}}
+
+        {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/all}}
+            <div class="productView-tabs">
+                {{> components/products/tabs}}
+            </div>
+        </div>
+{{/partial}}
+{{> layout/base}}
+<!-- Klaviyo -->
+<script type="text/javascript">
+var _learnq = _learnq || [];
+
+var product_categories = [];
+{{#each product.category}}
+product_categories.push('{{this}}')
+{{/each}}
+
+var item = {
+Name: "{{product.title}}",
+ProductID: "{{product.id}}",
+ImageURL: "{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}",
+URL: "{{product.url}}",
+Brand: "{{product.brand.name}}",
+Categories: product_categories,
+Price: "{{product.price.without_tax.value}}",
+CompareAtPrice:"{{product.price.rrp_without_tax.value}}"
+};
+
+_learnq.push(['track', 'Viewed Product', item]);
+
+_learnq.push(['trackViewedItem', {
+Title: item.Name,
+ItemId: item.ProductID,
+Categories: item.Categories,
+ImageUrl: item.ImageURL,
+Url: item.URL,
+Metadata: {
+Brand: item.Brand,
+Price: item.Price,
+CompareAtPrice: item.CompareAtPrice
+}
+}]);
+</script>
+
+<script text="text/javascript">
+var _learnq = _learnq || [];
+document.getElementById("form-action-addToCart").addEventListener('click',function (){
+ _learnq.push(['track', 'Added to Cart', item]);
+});
+</script>
+
+<!-- Pinterest -->
+<script>
+  pintrk('track', 'pagevisit', {
+    product_name:'{{product.title}}',
+    product_id: {{product.id}}
+  });
+</script>

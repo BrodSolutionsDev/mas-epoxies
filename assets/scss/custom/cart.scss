@@ -1,0 +1,28 @@
+.cart-remove > svg {
+	fill: white;
+}
+
+.apple-pay-checkout-button {
+  background-image: -webkit-named-image(apple-pay-logo-black);
+  background-color: white;
+}
+  
+  .apple-pay-checkout-button {
+  width: 200px; /* apple specified minimum is 175px, there is no maximum */
+  height: 60px; /* apple specified minimum is 32px, maximum is 64px */
+} 
+
+.previewCartCheckout .button + .button{
+  background-color: #DA291C;
+  border: #DA291C;
+  color: white;
+}
+
+.optimizedCheckout-buttonPrimary{
+  color: white !important;
+}
+#add-shipping {
+  .form-select {
+    background-color: white!important;
+  }
+}

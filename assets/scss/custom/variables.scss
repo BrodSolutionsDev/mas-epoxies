@@ -1,0 +1,81 @@
+// Colors
+$red: #da291c;
+$black: #000000;
+$black-light: #404040;
+$grey: #eeeeee;
+$grey-dark: #757575;
+$grey-background: #ebebeb;
+$white: #ffffff;
+$blue: #3596fd;
+// Fonts
+$proxima-nova: "ProximaNova-Regular";
+$proxima-nova-bold: "ProximaNova-Bold";
+$proxima-nova-semibold: "ProximaNova-SemiBold";
+$foros-bold: "Foros-Bold";
+$foros-bolditalic: "Foros-Bolditalic";
+
+$text-shadow: 3px 6px 10px #020101;
+$box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.body {
+  overflow-x: hidden;
+}
+.page-content {
+  img {
+    border-radius: 5px;
+    box-shadow: $box-shadow;
+  }
+}
+
+.text-red {
+  color: $red;
+}
+.text-grey {
+  color: $grey-dark;
+}
+h1 {
+  font-family: $foros-bolditalic;
+  color: $red;
+}
+h2,
+h3,
+.button,
+.cs-navbar .navPages:not(.nav-without-mm) ul li .navPages-action {
+  font-family: $foros-bold;
+}
+h4,
+h5,
+h6 {
+  font-family: $proxima-nova-bold;
+}
+body,
+a,
+p {
+  font-family: $proxima-nova;
+}
+
+blockquote,
+blockquote p {
+  font-size: 18px;
+}
+cite {
+  color: $black;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.button {
+  border-radius: 0.3rem;
+}
+.button--default, .button--secondary {
+  background-color: $white;
+}
+.drop-shadow {
+  box-shadow: $box-shadow;
+}
+.box-border {
+  padding: 10px;
+  border-style: solid;
+  border-width: 5px 5px 5px 5px;
+  border-color: $black-light;
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  margin: 0px 20px 0px 20px;
+}

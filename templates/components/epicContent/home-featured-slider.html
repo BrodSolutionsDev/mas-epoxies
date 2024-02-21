@@ -1,0 +1,51 @@
+<div class="section-heading">
+	<h2 class="section-title">{{lang 'products.featured' }}</h2>
+	<p class="section-subtitle">{{lang 'products.featured_description' store_name=settings.store_name}}</p>
+</div>
+<section data-product-type="featured" {{#if settings.data_tag_enabled}} data-list-name="Featured Products" {{/if}} data-equalizer class="productCarousel"
+    data-list-name="{{list}}"
+    data-slick='{
+        "dots": false,
+        "infinite": false,
+        "slidesToShow": {{ columns }},
+        "slide": ".js-featured-slide",
+        "prevArrow": ".js-featured-prev-arrow",
+        "nextArrow": ".js-featured-next-arrow",
+        "slidesToScroll": 1,
+            "responsive": [
+                {
+                "breakpoint": 1024,
+                "settings": {
+                    "slidesToScroll": 1,
+                    "slidesToShow": 3
+                    }
+                },
+                {
+                "breakpoint": 767,
+                "settings": {
+                    "slidesToScroll": 1,
+                    "slidesToShow": 2
+                    }
+                },
+                {
+                "breakpoint": 480,
+                "settings": {
+                    "slidesToScroll": 1,
+                    "slidesToShow": 1
+                    }
+                }
+                ]
+    }'
+>
+    {{#if products.length '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="js-featured-prev-arrow slick-prev slick-arrow"></button>
+    {{/if}}
+    {{#each products}}
+    <div class="productCarousel-slide js-featured-slide">
+            {{> components/products/card settings=../settings show_rating=../settings.show_product_rating setting_show = ../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    </div>
+    {{/each}}
+    {{#if products.length '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="js-featured-next-arrow slick-next slick-arrow"></button>
+    {{/if}}
+</section>

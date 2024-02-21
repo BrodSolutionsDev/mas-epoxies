@@ -1,0 +1,31 @@
+// Category Page
+.epic-product-card .box-cart, .epic-product-card .box-cart .card-figcaption-button:hover  {
+	background-color: $black;
+    color:$white;
+	border-radius: 0.3rem;
+}
+#facetedSearch-navList .accordion-block, .facetedSearch-refineFilters, .sidebar-categories {
+	border: 0px solid $black;
+	margin-bottom: 20px;
+	border-radius: 0.3rem;
+    box-shadow: $box-shadow;
+}
+.accordion--navList .accordion-title, .sidebarBlock-heading {
+    font-family: $proxima-nova-semibold;
+	font-size: 1.2rem;
+	text-transform: unset;
+}
+.navList-action {
+	color: $black;
+}
+.card-body .card-text {
+	color: $black;
+}
+.productView-thumbnail-link {
+    box-shadow: $box-shadow;
+    border:0;
+}
+
+.epic-product-card:hover {
+	box-shadow: unset;
+}

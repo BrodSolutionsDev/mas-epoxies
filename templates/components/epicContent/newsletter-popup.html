@@ -1,0 +1,42 @@
+<div id="epic-newsletter-popup" class="d-none newsletter-popup">
+    <div class="newsletter-popup-container align-items-center">
+        <div class="newsletter-popup-inner">
+            <button title="Close" type="button" class="popup-close" data-close-newsletter-popup>
+                <i class="fal fa-times-circle"></i>
+            </button>
+            <div class="row no-gutters align-items-center h-100">
+                {{#if theme_settings.np-image "!==" ""}}
+                    <div class="col-12 col-md-4 d-none d-md-block h-100">
+                        <img class="img-responsive" src="{{getImage theme_settings.np-image}}" alt="">
+                    </div>
+                {{/if}}
+                <div class="col-12 col-md">
+                    <div class="newsletter-popup-content">
+                        <h4>{{lang 'newsletter.subscribe'}}</h4>
+                        <p>{{lang 'newsletter.subscribe_intro'}}</p>
+                        <div class="popup-subcribe-form">
+                            <form class="form" action="{{urls.subscribe.action}}" method="post" id="popupNewsletterForm">
+                                <fieldset class="form-fieldset">
+                                    <input type="hidden" name="action" value="subscribe">
+                                    <input type="hidden" name="nl_first_name" value="bc">
+                                    <input type="hidden" name="check" value="1">
+                                    <div class="form-field">
+                                        <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
+                                        <div class="form-wrap">
+                                            <input class="form-input" id="nl_email" name="nl_email" type="email" value="{{customer.email}}" placeholder="{{lang 'newsletter.email_placeholder'}}">
+                                            <input class="button button--primary" type="submit" value="{{lang 'newsletter.subscribe_submit'}}">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="popup-social-icons">
+                            <h5>{{lang 'social.connect'}}</h5>
+                            {{> components/common/social-links}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

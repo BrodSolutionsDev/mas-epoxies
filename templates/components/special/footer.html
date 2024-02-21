@@ -1,0 +1,101 @@
+{{#if page_type '!==' 'default'}}
+    {{#if banners.bottom}}
+        {{#if settings.data_tag_enabled}}
+            <div class="banners" data-banner-location="bottom">
+                {{#each (limit banners.bottom_metadata 1)}}
+                    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                        <div data-event-type="promotion-click">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="banners" data-banner-location="bottom">
+                <div class="banner">
+                    {{{limit banners.bottom 1}}}
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+{{/if}}
+<footer class="site-footer">
+    {{> components/epicFooter/footer-about enabled=theme_settings.epic_footer_display_cta}}
+    <section class="footer-newsletter">
+        <div class="container">
+            {{> components/common/subscription-form}}
+        </div>
+    </section>
+    <section class="main-footer {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} brands-menu-show{{/and}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} col-md-6{{else}} col-md-4{{/and}} col-lg f-navigate-menu">
+                    <h4>Resources</h4>
+                    <ul class="footer-info-list">
+                        <li><a href="/resin-calculator/">Resin Calculator</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/faq/">Frequently Asked Questions</a></li>
+                        <li><a href="/product-resources/">Product Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg column-lr-border f-categories-menu">
+                    <h4>Customer Care</h4>
+                        <ul class="footer-info-list">
+                            <li><a href="/login.php">My Account</a></li>
+                            <li><a href="/contact-us">Contact Us</a></li>
+                            <li><a href="/terms-of-use">Terms of Use</a></li>
+                            <li><a href="/terms-and-conditions-of-sale">Terms of Sale</a></li>
+                            <li><a href="/returns/">Product Returns</a></li>
+                        </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg account-menu column-r-border">
+                    <h4>About</h4>
+                    <ul class="footer-info-list">
+                        <li><a href="/about/">Company</a></li>
+                        <li><a href="/distributor-application">Distributor Application</a></li>
+                        <li><a href="/where-to-buy">Where to Buy</a></li>
+                        <li><a href="/affiliates">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}} col-xl-4{{else}} col-xl-5{{/and}} column-md-border">
+                    <h4>{{lang 'social.connect'}}</h4>
+                    <div class="footer-store-info">
+                        {{> components/epicFooter/footer-store-info}}
+                    </div>
+                    <div class="footer-social">
+                        {{> components/common/social-links}}
+                    </div>
+                    {{#if theme_settings.geotrust_ssl_common_name}}
+                        <div class="footer-geotrust-ssl-seal">
+                            {{> components/common/geotrust-ssl-seal}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div><!--row-->
+        </div>
+    </section>
+    {{#if settings.paypal_commerce_credit_message}}
+        <section class="copyright-info paypal-credit-section">
+            <div class="container text-center">
+                <p class="paypal-credit">{{nl2br settings.paypal_commerce_credit_message}}</p>
+            </div>
+        </section>
+    {{/if}}
+    <section class="copyright-info">
+        <div class="container">
+            <div class="row align-items-center">
+                {{#if theme_settings.show_copyright_footer}}
+                    <div class="col-12 col-lg-6">
+                        <p>&copy; copyright {{moment format="YYYY"}} {{settings.store_name}}.{{#if theme_settings.show_theme_credits}} Designed by <a href="https://www.epicshops.com/" target="_blank">epicShops</a>{{/if}}</p>
+                    </div>
+                {{/if}}
+                <div class="{{#if theme_settings.show_copyright_footer}}col-12 col-lg-6 text-right{{else}}col-12 text-center{{/if}}">
+                    {{> components/common/payment-icons}}
+                </div>
+            </div>
+        </div>
+    </section>
+  
+</footer>
+<a id="back-to-top" href="#" class="backtotop"><i class="fal fa-angle-up" aria-hidden="true"></i></a>
+</div>

@@ -1,0 +1,23 @@
+<div class="col-12 col-md-6 col-lg-4 mb-5">
+    <div class="b-post">
+        <div class="b-post-content">
+            {{#if post.thumbnail}}
+                <div class="blog-thumbnail" style="background-image:url({{getImage post.thumbnail 'defaultImage'}})"><a href="{{post.url}}"></a></div>
+            {{else}}
+                <div class="blog-thumbnail" style="background-image:url(https://via.placeholder.com/600x400?text=Blog)">
+                    <a href="{{post.url}}"></a>
+                </div>
+            {{/if}}
+            <div class="b-post-desc">
+                <h3 class="b-post-title"><a href="{{post.url}}">{{post.title}}</a></h3>
+                <div class="b-blog-info">
+                    <p class="b-post-author"><i class="fa fa-user" aria-hidden="true"></i> {{post.author}} <i class="fa fa-calendar" aria-hidden="true"></i>
+    </p>
+    <p class="b-post-date">{{post.date_published}}</p>
+                    <p class="b-blog-summary">{{post.summary}}&hellip;</p>
+                </div>
+                <a href="{{url}}" class="button button--primary">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>

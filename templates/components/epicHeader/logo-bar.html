@@ -1,0 +1,167 @@
+<div class="container">
+    {{#if theme_settings.logo-position '==' 'left'}}
+        <div class="row align-items-center">
+            <div class="col-md-3 col-lg-3">
+                {{#if page_type '===' 'default'}}
+                    <h1 class="site-logo header-logo--left">
+                        {{> components/common/store-logo}}
+                    </h1>
+                {{else}}
+                    <div class="site-logo header-logo--left">
+                        {{> components/common/store-logo}}
+                    </div>
+                {{/if}}
+            </div>
+            <div class="{{#if theme_settings.left-category-menu}}col-md-7{{else}}col-md-6{{/if}} ml-auto">
+                {{> components/epicHeader/search}}
+            </div>
+            {{#if settings.show_wishlist}}
+            <div class="col-auto{{#if theme_settings.left-category-menu '!==' true}} p-0{{/if}}">
+                <ul class="logobar-nav">
+                    <li>
+                        <a href="{{urls.account.wishlists.all}}">
+                            <i class="fal fa-heart-circle"></i>
+                            {{lang 'account.nav.wishlists' num_wishlists=customer.num_wishlists}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if theme_settings.left-category-menu '!==' true}}
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    <div class="col-auto">
+                        <div class="cart-section">
+                            <div class="cart-items">
+                                <span class="cart-quantity cart-items-count">{{cart.quantity}}</span>
+                                <span class="icon">
+                                    <svg><use xlink:href="#icon-shopping-cart" /></svg> 
+                                </span>
+                            </div>
+                            <div class="cart-subtotal">
+                                <a
+                                    class="view-cart"
+                                    data-cart-preview
+                                    data-dropdown="cart-preview-dropdown"
+                                    href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                                   <span>My Cart</span><br><span class="ct-price">{{cart.grand_total.formatted}}</span> <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                                </a>
+                                <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {{else}}
+                {{/or}}
+            {{/if}}
+        </div><!--row-->
+    {{/if}}
+    {{#if theme_settings.logo-position '==' 'center'}}
+    <div class="row align-items-center"> 
+            <div class="col-lg-4 offset-lg-4">
+                {{#if page_type '===' 'default'}}
+                    <h1 class="site-logo text-center">
+                        {{> components/common/store-logo}}
+                    </h1>
+                {{else}}
+                    <div class="site-logo text-center">
+                        {{> components/common/store-logo}}
+                    </div>
+                {{/if}} 
+            </div>
+            {{#if settings.show_wishlist}}
+            <div class="col-auto ml-auto{{#if theme_settings.left-category-menu '!==' true}} p-0{{/if}}">
+                <ul class="logobar-nav">
+                    <li>
+                        <a href="{{urls.account.wishlists.all}}">
+                            <i class="fal fa-heart-circle"></i>
+                            {{lang 'account.nav.wishlists' num_wishlists=customer.num_wishlists}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            {{#if theme_settings.left-category-menu '!==' true}}
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    <div class="col-auto">
+                        <div class="cart-section">
+                            <div class="cart-items">
+                                <span class="cart-quantity cart-items-count">{{cart.quantity}}</span>
+                                <span class="icon">
+                                    <svg><use xlink:href="#icon-shopping-cart" /></svg> 
+                                </span>
+                            </div>
+                            <div class="cart-subtotal">
+                                <a
+                                    class="view-cart"
+                                    data-cart-preview
+                                    data-dropdown="cart-preview-dropdown"
+                                    href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                                   <span>My Cart</span><br><span class="ct-price">{{cart.grand_total.formatted}}</span> <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                                </a>
+                                <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {{else}}
+                {{/or}}
+            {{/if}}
+        </div><!--row-->
+    {{/if}}
+    {{#if theme_settings.logo-position '==' 'right'}}
+        <div class="row align-items-center">
+            {{#if theme_settings.left-category-menu '!==' true}}
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    <div class="col-auto">
+                        <div class="cart-section">
+                            <div class="cart-items">
+                                <span class="cart-quantity cart-items-count">{{cart.quantity}}</span>
+                                <span class="icon">
+                                    <svg><use xlink:href="#icon-shopping-cart" /></svg> 
+                                </span>
+                            </div>
+                            <div class="cart-subtotal cart-subtotal-left">
+                                <a
+                                    class="view-cart"
+                                    data-cart-preview
+                                    data-dropdown="cart-preview-dropdown"
+                                    href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                                   <span>My Cart</span><br><span class="ct-price">{{cart.grand_total.formatted}}</span> <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                                </a>
+                                <div class="dropdown-menu cart-p-right" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {{else}}
+                {{/or}}
+            {{/if}}
+            {{#if settings.show_wishlist}}
+            <div class="col-auto{{#if theme_settings.left-category-menu '!==' true}} p-0{{/if}}">
+                <ul class="logobar-nav">
+                    <li>
+                        <a href="{{urls.account.wishlists.all}}">
+                            <i class="fal fa-heart-circle"></i>
+                            {{lang 'account.nav.wishlists' num_wishlists=customer.num_wishlists}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+            <div class="{{#if theme_settings.left-category-menu}}col-md-6{{else}}col-md-5{{/if}} mr-auto">
+                {{> components/epicHeader/search}}
+            </div>
+            <div class="col-md-3 col-lg-3">
+                {{#if page_type '===' 'default'}}
+                    <h1 class="site-logo header-logo--right">
+                        {{> components/common/store-logo}}
+                    </h1>
+                {{else}}
+                    <div class="site-logo header-logo--right">
+                        {{> components/common/store-logo}}
+                    </div>
+                {{/if}}
+            </div>
+        </div><!--row-->
+    {{/if}}
+    {{#if theme_settings.logo-position '!==' 'center'}}
+        <section class="quickSearchResults quick-search" data-bind="html: results"></section>
+    {{/if}}
+</div><!--container-->

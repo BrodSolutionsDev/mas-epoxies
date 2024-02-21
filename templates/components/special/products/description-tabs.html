@@ -1,0 +1,134 @@
+<ul class="tabs" data-tab>
+    <li class="tab is-active">
+        <a class="tab-title" href="#tab-description">{{lang 'products.description'}}</a>
+    </li>
+    {{#if product.warranty}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+        </li>
+    {{/if}}
+    {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">{{sanitize theme_settings.pdp-custom-fields-tab-label}}</a>
+        </li>
+    {{/all}}
+    
+    <li id="how-much" class="tab">
+        <a class="tab-title" href="#tab-calculator">How Much Will I Need?</a>
+    </li>
+    {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
+        <li class="tab">
+            <a class="tab-title productView-reviewTabLink" href="#tab-reviews">{{lang 'products.reviews.header' total=product.reviews.total}}</a>
+        </li>
+    {{/all}}
+</ul>
+<div class="tabs-contents">
+    <div class="tab-content is-active" id="tab-description">
+        {{{product.description}}}
+    </div>
+   {{#if product.warranty}}
+       <div class="tab-content" id="tab-warranty">
+           {{{product.warranty}}}
+           <a href="/faq" target="_blank">Frequently Asked Questions</a>
+       </div>
+   {{/if}}
+   {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
+      <div class="tab-content" id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
+         <dl class="productView-info">
+            {{#each product.custom_fields}}
+               <dt class="productView-info-name">{{name}}:</dt>
+               <dd class="productView-info-value">{{{value}}}</dd>
+            {{/each}}
+         </dl>
+      </div>
+   {{/all}}
+   
+   <div class="tab-content" id="tab-questions">
+       <script src="https://masepoxies.services.answerbase.com/javascript/widget/full-featured-widget.min.js" type="text/javascript"
+        data-platform="bigcommerce"
+        data-product-external-id="{{product.id}}"
+        data-product-sku="{{product.sku}}"
+        data-product-title="{{product.title}}"
+        data-product-price="{{product.price.without_tax.value}}"
+        data-product-url="{{product.url}}"
+        data-product-description="{{sanitize product.description}}"
+        data-product-image-url="{{getImage product.main_image 'thumbnail'}}" defer>
+</script>
+
+   </div>
+   <!-- Calculator -->
+   <div class="tab-content" id="tab-calculator">
+    <h2>How Much Will I Need?</h2>
+    <div class="calculators">
+    <div id="epoxy-resin-volume-calculator">
+        <div class="flex flex-top">
+          <div class="flex-50">
+            <h4>What are the dimensions of your project?</h4>
+            <label for="length">Length (in)</label> <input id="length" type="number" value="12" /> 
+            <label for="width">Width (in)</label> <input id="width" type="number" value="12" /> 
+            <label for="thickness">Thickness (in)</label> <input id="thickness" type="number" value="0.5" />
+          </div>
+          <div class="flex-50">
+            <div class="results">
+              <h4>Volume of your project</h4>
+              <div class="flex flex-results">
+              <p>Cubic Inches<span id="cubic-inches">72</span></p>
+              <p>Cubic Feet<span id="cubic-feet">0.04</span></p>
+            </div>
+              <h4>Amount of epoxy resin you will need</h4>
+              <div class="flex flex-results">
+                <p>Ounces<span id="ounces">39.89</span></p>
+                <p>Liters<span id="liters">1.18</span></p>
+                <p>Gallons<span id="gallons">0.31</span></p>
+              </div>
+              </div>
+          </div>
+        </div>
+    </div>
+      </div>
+    </div>
+    <script>
+        // Constants
+        const cubicFeet = 1728;
+        const ounces = 1.805;
+        const liters = 61.024;
+        const gallons = 231;
+        </script>
+      
+        <script>
+          // Epoxy Resin Volume Calculator
+        var lengthERVC = $("#epoxy-resin-volume-calculator #length");
+        var widthERVC = $("#epoxy-resin-volume-calculator #width");
+        var thicknessERVC = $("#epoxy-resin-volume-calculator #thickness");
+        $("#epoxy-resin-volume-calculator input").keyup(function () {
+          calcERVC();
+        });
+        function calcERVC() {
+          var epoxyCubicInches = lengthERVC.val() * widthERVC.val() * thicknessERVC.val();
+          var epoxyCubicFeet = epoxyCubicInches / cubicFeet;
+          var epoxyOunces = epoxyCubicInches / ounces;
+          var epoxyLiters = epoxyCubicInches / liters;
+          var epoxyGallons = epoxyCubicInches / gallons;
+          $("#epoxy-resin-volume-calculator .results #cubic-inches").html(epoxyCubicInches.toFixed(2));
+          $("#epoxy-resin-volume-calculator .results #cubic-feet").html(epoxyCubicFeet.toFixed(2));
+          $("#epoxy-resin-volume-calculator .results #ounces").html(epoxyOunces.toFixed(2));
+          $("#epoxy-resin-volume-calculator .results #liters").html(epoxyLiters.toFixed(2));
+          $("#epoxy-resin-volume-calculator .results #gallons").html(epoxyGallons.toFixed(2));
+        }
+      </script>
+   {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
+       <div class="tab-content" id="tab-reviews">
+           {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+       </div>
+   {{/all}}
+</div>
+<script>
+  var productID = {{product.id}};
+  var howMuch = [112,113,114,116,123,129];
+  var productMatch = howMuch.includes(productID);
+    if(productMatch == false) {
+      $('#how-much').hide();
+    } else {
+      $('#how-much').show();
+    }
+</script>

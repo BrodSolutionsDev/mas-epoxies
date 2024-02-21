@@ -1,0 +1,29 @@
+<div id="main-content" class="body{{#if page_type '===' 'default'}} home{{/if}}" data-currency-code="{{currency_selector.active_currency_code}}">
+    {{#block "hero"}} {{/block}}
+	<div class="site-content{{#and (if page_type '!==' 'default' ) (if page_type '!==' 'category')}} container container-lg{{/and}}">
+			{{#block "page"}} {{/block}}
+	</div>
+    {{> components/common/modal/modal}}
+    {{> components/common/alert/alert-modal}}
+</div>
+{{#and (if page_type '==' 'default' ) (if theme_settings.display-testimonial-section '==' '')}}
+    {{#if banners.bottom}}
+        {{#if settings.data_tag_enabled}}
+            <div class="banners" data-banner-location="bottom">
+                {{#each (limit banners.bottom_metadata 1)}}
+                    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                        <div data-event-type="promotion-click">
+                            {{{this.content}}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="banners" data-banner-location="bottom">
+                <div class="banner">
+                    {{{limit banners.bottom 1}}}
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+{{/and}}

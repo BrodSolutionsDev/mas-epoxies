@@ -1,0 +1,179 @@
+.has-newsletter
+{
+    overflow:hidden;
+}
+.newsletter-popup {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    left: 0;
+    background: $np_overlayFill;
+    top: 0;
+    overflow: auto;
+    -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    .newsletter-popup-container
+    {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        height:100%;
+        width: 100%;
+        padding: 30px 0;
+        .newsletter-popup-inner
+        {
+            position: relative;
+            height: 380px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 0 0 800px;
+            background: $np_backgroundColor;
+            border-radius: 10px;
+            overflow: hidden;
+            .popup-close
+            {
+                position: absolute;
+                right: 5px;
+                top: 0;
+                font-size: 30px;
+                padding: 0;
+                z-index: 9;
+                color:$np_textColor;
+            }
+            .newsletter-popup-content 
+            {
+                padding: 40px;
+                text-align: center;
+                color:$np_textColor;
+                h4
+                {
+                    text-transform: uppercase;
+                    margin: 0 0 4px;
+                    color:$np_textColor;
+                }
+                .popup-subcribe-form
+                {
+                    .form-field
+                    {
+                        margin:0;
+                        .form-wrap
+                        {
+                            position: relative;
+                            .form-input
+                            {
+                                height: 50px;
+                                padding: 0 130px 0 20px;
+                            }
+                            .button
+                            {
+                                position: absolute;
+                                right: 5px;
+                                margin: 0;
+                                top: 5px;
+                                height: 40px;
+                                padding: 0 20px;
+                            }
+                        }
+                    }
+                }
+                h5
+                {
+                    color:$np_textColor;
+                }
+                .socialLinks
+                {
+                    display: inline-block;
+                    vertical-align: middle;
+                    .icon
+                    {
+                        height: 2.7rem;
+                        width: 2.7rem;
+                        background: $buttonStyle-primary-backgroundColor;
+                        padding: 10px;
+                        border-radius: 50%;
+                        svg
+                        {
+                            fill:$buttonStyle-primary-color;
+                        }
+                        &:hover
+                        {
+                            background:$buttonStyle-primary-backgroundColorHover;
+                            color:$buttonStyle-primary-colorHover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in
+{
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+@media only screen and (max-width:800px)
+{
+    .newsletter-popup
+    {
+        .newsletter-popup-container
+        {
+            padding:20px 10px;
+            .newsletter-popup-inner
+            {
+                flex:0 0 100%;
+                .newsletter-popup-content
+                {
+                    padding:20px 15px;
+                }
+            }
+        }
+    }
+}

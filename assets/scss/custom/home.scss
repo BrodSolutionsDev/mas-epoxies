@@ -1,0 +1,43 @@
+.heroCarousel-slide .heroCarousel-image {
+	height: unset;
+}
+.heroCarousel-slide .heroCarousel-image-wrapper {
+	height: auto;
+}
+#home-dpx {
+    background-image: url('https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/home-dpx-bg-graphic.jpg');
+    h2, h3 {
+        text-align: center;
+            color: $white;
+            line-height: 1;
+            text-shadow: $text-shadow;
+    }
+    h2 {
+        font-size: 48px;
+    }
+}
+#home-buckets, #home-make-today, #home-testimonials, #home-partners {
+    h2 {
+        text-align: center;
+    }
+}
+#home-buckets{
+    text-align: center;
+    
+}
+#home-make-today, #home-dpx, #home-partners {
+    margin: 50px 0;
+}
+#home-meet {
+    background:$black;
+    h3, h5 {
+        color: $white;
+        padding: 15px;
+    }
+}
+
+#home-partners {
+    img {
+        max-width: 150px;
+    }
+}

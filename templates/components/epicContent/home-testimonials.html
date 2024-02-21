@@ -1,0 +1,53 @@
+<div class="testimonial-section" data-banner-location="bottom">
+    <div class="container container-lg">
+        <div class="section-heading">
+            <h2 class="section-title"><span>{{lang 'epicContent.testimonial.testimonial_title'}}</span></h2>
+            <p class="section-subtitle">{{lang 'epicContent.testimonial.testimonial_description'}}</p>
+        </div>
+        <section    data-equalizer class="testimonial-content" 
+                    data-slick='{
+                        "dots": false,
+                        "infinite": true,
+                        "slidesToScroll": 1,
+                        "slidesToShow": 2,
+                        "autoplay": true,
+                        "autoplaySpeed": 4000,
+                        "speed": 600,
+                        "slide": ".js-testimonial-slide",
+                        "prevArrow": ".js-testimonial-prev-arrow",
+                        "nextArrow": ".js-testimonial-next-arrow",
+                        "pauseOnHover": true,
+                        "responsive": [
+                            {
+                            "breakpoint": 767,
+                            "settings": {
+                                "slidesToScroll": 1,
+                                "slidesToShow": 1
+                                }
+                            },
+                            {
+                            "breakpoint": 991,
+                            "settings": {
+                                "slidesToScroll": 1,
+                                "slidesToShow": 2
+                                }
+                            }
+                            ]
+                        }'
+        >
+        {{#if banners.bottom.length '>' 2}}
+        <button aria-label="{{banners.bottom.length }}" class="js-testimonial-prev-arrow slick-prev slick-arrow"></button>
+        {{/if}}
+            {{#each banners.bottom}}
+                <div class="testimonial-item js-testimonial-slide" data-equalizer-watch>
+                    <div class="testimonial-item-content">
+                        {{{this}}}
+                    </div>
+                </div>
+            {{/each}}
+        {{#if banners.bottom.length '>' 2}}
+            <button aria-label="{{banners.bottom.length }}" class="js-testimonial-next-arrow slick-next slick-arrow"></button>
+        {{/if}}
+        </section>
+    </div>
+</div>

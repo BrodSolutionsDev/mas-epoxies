@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row top-bar-inner">
+        <div class="col-lg-auto d-none d-lg-block">
+            <ul class="top-contact-info">
+                {{#if theme_settings.show_phone_header}}
+                <li>
+                    <a href="tel:{{settings.phone_number}}">
+                        <span class="icon">
+                            <svg><use xlink:href="#icon-telephone" /></svg> 
+                        </span>
+                        {{settings.phone_number}}
+                    </a>
+                </li>
+                {{/if}}
+                {{#if theme_settings.show_email_header}}
+                <li>
+                    <a href="mailto:{{theme_settings.epic_email_address}}">
+                        <span class="icon">
+                            <svg><use xlink:href="#icon-email" /></svg> 
+                        </span>
+                        {{theme_settings.epic_email_address}}
+                    </a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+        <div class="col-auto ml-auto navUser text-right">
+            <ul class="navUser-section top-bar-menu">
+                {{#if theme_settings.logo-position '==' 'center'}}
+                    <li>
+                        <a class="navUser-action navUser-action--quickSearch" href="#" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false">
+                            <i class="fal fa-search"></i>
+                        </a>
+                    </li>
+                {{/if}}
+                <li>
+                    <a class="navUser-item--compare" href="{{urls.compare}}" data-compare-nav>{{lang 'common.compare'}} <span class="countPill countPill--positive"></span></a>
+                </li>
+                {{#if theme_settings.left-category-menu '==' ''}}
+                    <li class="menu-item-dropdown">
+                        <a href="javascript:void(0)"><i class="fal fa-user"></i>{{#if customer}} <span>Hi,</span> {{customer.name}}{{else}} {{lang 'common.account'}}{{/if}}</a>
+                        <ul class="menu-dropdown-list account-dropdown">
+                            {{#if customer}}
+                            <li>
+                                <a href="{{urls.account.orders.all}}">{{lang 'account.nav.orders'}}</a>
+                            </li>
+                            {{#if settings.returns_enabled}}
+                                <li>
+                                    <a href="{{urls.account.returns}}">{{lang 'account.nav.returns'}}</a>
+                                </li>
+                            {{/if}}
+                            <li>
+                                <a href="{{urls.account.inbox}}">{{lang 'account.mobile_nav.messages'}}</a>
+                            </li>
+                            <li>
+                                <a href="{{urls.account.addresses}}">{{lang 'account.nav.addresses'}}</a>
+                            </li>
+                            {{#if settings.show_payment_methods}}
+                                <li>
+                                    <a href="{{urls.account.payment_methods.all}}">{{lang 'account.nav.payment_methods'}}</a>
+                                </li>
+                            {{/if}}
+                            <li>
+                                <a href="{{urls.account.wishlists.all}}">{{lang 'account.mobile_nav.wishlists'}}</a>
+                            </li>
+                            <li>
+                                <a href="{{urls.account.recent_items}}">{{lang 'account.nav.recently_viewed'}}</a>
+                            </li>
+                            <li>
+                                <a href="{{urls.account.details}}">{{lang 'account.nav.settings'}}</a>
+                            </li>
+                            <li>
+                                <a href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+                            </li>
+                            {{else}}
+                                <li>
+                                    <a href="{{urls.auth.login}}">{{lang 'common.login'}}</a>
+                                </li>
+                                {{#if settings.account_creation_enabled}}
+                                    <li class="signup">
+                                        <a href="{{urls.auth.create_account}}">{{lang 'common.sign_up'}}</a>
+                                    </li>
+                                {{/if}}
+                            {{/if}}
+                        </ul>
+                    </li>
+                {{/if}}
+                {{#if settings.gift_certificates_enabled}}
+                    <li>
+                        <a href="{{urls.gift_certificate.purchase}}"><i class="fal fa-gift"></i> {{lang 'common.gift_cert'}}</a>
+                    </li>
+                {{/if}}
+            </ul>
+            
+            <div class="top-currency-selector">
+                {{> components/common/currency-selector}}
+            </div>
+        </div>
+    </div>
+</div><!--container-->
+{{#if theme_settings.logo-position '==' 'center'}}
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
+        {{> components/epicHeader/search}}
+    </div>
+{{/if}}

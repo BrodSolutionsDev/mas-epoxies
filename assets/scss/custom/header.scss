@@ -1,0 +1,49 @@
+// Top Bar
+.top-bar .top-contact-info li a {
+	font-size: 15px;
+}
+// Main Menu
+.cs-navbar .navPages:not(.nav-without-mm) ul li .navPages-action.is-open, .cs-navbar .navPages:not(.nav-without-mm) ul li .navPages-action:hover {
+	color:$white;
+    transition: all .7s;
+    border-bottom: 1px solid $red;
+    padding-bottom: 3px;
+}
+// Search
+.search-input-field input[type="search"] {
+    background: $grey;
+}
+
+.note-wrapper {
+  width: 100%;
+  background: #000;
+  position: absolute;
+  top: 255px;
+  z-index: 1;
+}
+
+.note-wrapper p {
+  width: 95%;
+  color: #fff;
+  margin: 0 auto;
+  font-size: 16px;
+  text-align: center;
+}
+
+#sd-image-ceff5587-8851-445f-83a0-b679c97b1072 img {
+  margin-top: 25px !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .note-wrapper {
+    top: 88px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  #sd-image-ceff5587-8851-445f-83a0-b679c97b1072 img {
+    margin-top: 50px !important;
+  }
+}

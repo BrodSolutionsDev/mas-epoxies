@@ -1,0 +1,113 @@
+{{#partial 'page'}}
+<main class="page">
+    <h1 class="page-heading">Troubleshooting</h1>
+    <div class="row" id="row">
+
+    </div>
+</main>
+
+{{/partial}}
+{{> layout/base }}
+
+<!-- FAQ Object -->
+<script>
+    var faq = [
+        {
+            "faq1": {
+                "heading": "Which Epoxy Should I use?",
+                "link": "/which-epoxy-resin-should-i-use/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/2to1-blogheader.png"
+            }
+        },
+        {
+            "faq2": {
+                "heading": "Can you resin over stained wood?",
+                "link": "/can-you-resin-over-stained-wood/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/can-you-epoxy-resin-over-stained.png"
+            }
+        },
+        {
+            "faq3": {
+                "heading": "What is the heat rating of epoxy resin?",
+                "link": "/what-is-the-heat-rating-of-epoxy/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/my-post-17-800x419.png"
+            }
+        },
+        {
+            "faq4": {
+                "heading": "The Ultimate Epoxy Resin Mixing Guide",
+                "link": "/the-ultimate-epoxy-resin-mixing-guide/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/mixing-resin.png"
+            }
+        },
+        {
+            "faq5": {
+                "heading": "How to Remove Soft & Sticky Epoxy",
+                "link": "/how-to-remove-soft-and-sticky-epoxy/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/removingepoxy-header.png"
+            }
+        },
+        {
+            "faq6": {
+                "heading": "The Easiest Way to Measure Epoxy by Volume",
+                "link": "/easiest-way-to-measure-epoxy-by-volume/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/my-post.png"
+            }
+        },
+        {
+            "faq7": {
+                "heading": "Why is My Epoxy Not Hardening?",
+                "link": "/why-is-my-epoxy-not-hardening/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/template-1.png"
+            }
+        },
+        {
+            "faq8": {
+                "heading": "Why is My Epoxy Resin Hot and Smoking?",
+                "link": "/why-is-my-epoxy-resin-hot-and-smoking/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/img-3479-1.png"
+            }
+        },
+        {
+            "faq9": {
+                "heading": "MAS Table Top Pro Epoxy FAQ",
+                "link": "/table-top-pro-epoxy-faq/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/faq-blog.png"
+            }
+        },
+        {
+            "faq10": {
+                "heading": "What is Non-blushing Epoxy?",
+                "link": "https://masepoxies.com/",
+                "image": "https://cdn11.bigcommerce.com/s-8rejm4fv6m/product_images/uploaded_images/blushboard.png"
+            }
+        },
+    ]
+</script>
+
+<script>
+    var row = document.getElementById('row');
+
+    for (var i = 0; i < faq.length; i++) {
+        var div = document.createElement('div');
+        
+        div.className = "col-12 col-md-6 col-lg-4 mb-5";
+        div.innerHTML = `
+        <div class="b-post">
+            <div class="b-post-content">
+                <div class="blog-thumbnail" style="background-image: url(${Object.values(faq[i])[0].image})">
+                    <a href="${Object.values(faq[i])[0].link}"></a>
+                </div>
+                <div class="b-post-desc">
+                    <h3 class="b-post-title">
+                        <a href="${Object.values(faq[i])[0].link}">${Object.values(faq[i])[0].heading}</a>
+                    </h3>
+                    <a href="${Object.values(faq[i])[0].link}" class="button button--primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        `;
+
+        row.appendChild(div);
+    }
+</script>

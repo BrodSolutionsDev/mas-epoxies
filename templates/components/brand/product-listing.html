@@ -1,0 +1,19 @@
+<div class="row mb-5">
+    <div class="col-12 col-md sort-byFilter">
+        {{> components/products/filter sort=pagination.brand.sort}}
+    </div>
+    <div class="col-md-auto d-none d-md-block">
+        <div class="products-switcher text-right">
+            <a href="javascript:void(0)" class="switcher-grid switcher-button switcher-active"> 
+                <span class="icon"><svg><use xlink:href="#icon-grid-view" /></svg></span>
+            </a>
+            <a href="javascript:void(0)" class="switcher-list switcher-button">
+                <span class="icon"><svg><use xlink:href="#icon-list-view" /></svg></span>
+            </a>
+        </div>
+    </div>
+</div>
+<form action="{{urls.compare}}" method='POST' {{#if settings.data_tag_enabled}} data-list-name="Brand: {{brand.name}}" {{/if}} data-product-compare>
+    {{> components/products/grid products=brand.products show_compare=brand.show_compare theme_settings=theme_settings event="list"}}
+</form>
+{{> components/common/paginator pagination.brand}}

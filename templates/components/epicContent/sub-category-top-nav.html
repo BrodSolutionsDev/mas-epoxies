@@ -1,0 +1,16 @@
+<div class="row justify-content-center mb-4">
+	{{#each category.subcategories}}
+	<div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+		<a href="{{url}}" alt="{{name}}" title="{{name}}" class="subcategories-box">
+			{{#if image}}
+				{{> components/common/responsive-img
+	                image=image
+	                fallback_size=theme_settings.thumb_size
+	                lazyload=theme_settings.lazyload_mode
+	            }}
+	        {{/if}}
+			<h5 class="{{#if image}}mt-3{{/if}}">{{name}}</h5>
+		</a>
+	</div>
+	{{/each}}
+</div>

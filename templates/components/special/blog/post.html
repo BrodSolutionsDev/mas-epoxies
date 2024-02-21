@@ -1,0 +1,28 @@
+<article class="blog">
+    <div class="blog-post-body">
+        <header class="blog-header">
+            <h1 class="blog-title">{{post.title}}</h1>
+            <p class="blog-date">{{post.date_published}}</p>
+        {{>components/common/share}}
+        </header>
+        <div class="blog-post">
+            {{#if post.body}}
+                {{{post.body}}}
+            {{else}}
+                {{{post.summary}}}
+                {{#if post.show_read_more}}
+                    &hellip; <a href="{{url}}">{{lang 'blog.read_more'}}</a>
+                {{/if}}
+            {{/if}}
+            {{#if post.tags}}
+                <ul class="tags">
+                    {{#each post.tags}}
+                    <li class="tag">
+                        <a href="{{url}}">#{{name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+    </div>
+</article>

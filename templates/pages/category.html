@@ -1,0 +1,70 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{inject "categoryId" category.id}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="container-fluid {{#if theme_settings.contain-category-pages}}container{{else}}container-lg-p{{/if}}">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <!-- {{#if category.image}}
+    {{> components/common/responsive-img
+        image=category.image
+        fallback_size=theme_settings.zoom_size
+        lazyload=theme_settings.lazyload_mode
+        class="category-header-image"
+    }}
+{{/if}} -->
+    {{#unless theme_settings.hide_category_page_heading }}
+    <h1 class="page-heading">{{category.name}}</h1>
+    {{{region name="category_below_header"}}}
+    {{/unless}}
+    {{#if category.description}}
+        <div class="mb-4">
+            {{{category.description}}}
+        </div>
+    {{/if}}
+    {{#if theme_settings.category-top-nav }}
+        {{> components/epicContent/sub-category-top-nav}}
+    {{/if}}
+    <div class="page">
+        {{#if theme_settings.category-sidebar}}
+            {{#if category.faceted_search_enabled}}
+                <aside class="page-sidebar" id="faceted-search-container">
+                    {{> components/category/sidebar}}
+                </aside>
+            {{else if category.subcategories}}
+                <aside class="page-sidebar" id="faceted-search-container">
+                    {{> components/category/sidebar}}
+                </aside>
+            {{else if category.shop_by_price}}
+                {{#if theme_settings.shop_by_price_visibility}}
+                     <aside class="page-sidebar" id="faceted-search-container">
+                        {{> components/category/sidebar}}
+                    </aside>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+ 
+        <main class="page-content {{#if theme_settings.large-product-cards}}large-cards{{/if}}" id="product-listing-container">
+            
+ 			{{> components/category/product-listing}}
+            {{{region name="category_below_content"}}}
+        </main>
+    </div>
+</div>
+
+{{/partial}}
+{{> layout/base}}

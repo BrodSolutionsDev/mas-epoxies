@@ -1,0 +1,717 @@
+{{#partial "page"}}
+
+<div class="container">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <main class="page">
+        {{#unless theme_settings.hide_page_heading }}
+            <h1 class="page-heading">{{ page.title }}</h1>
+            <h3>Need help determining the amount of resin you need? We've got you covered!</h3>
+        {{/unless}}
+    
+        {{#if page.sub_pages}}
+        <nav class="navBar navBar--sub">
+            <ul class="navBar-section account-navigation">
+            {{#each page.sub_pages}}
+                <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+            </ul>
+        </nav>
+        {{/if}}
+        
+        {{{region name="page_builder_content"}}}
+    
+        <div class="calculators">
+
+                <h2>Epoxy Resin Volume Calculators</h2>
+                <p class="lead">Help to determine how much epoxy resin you will need for a project.</p>
+                <div id="epoxy-resin-volume-calculator">
+                  <h3 class="text-center">Coating & Casting: Rectangle or Square Calculator</h3>
+                  <div class="flex flex-top">
+                    <div class="flex-50">
+                      <h4>What are the dimensions of your project?</h4>
+                      <label for="length">Length (in)</label> <input id="length" type="number" value="12" /> 
+                      <label for="width">Width (in)</label> <input id="width" type="number" value="12" /> 
+                      <label for="thickness">Thickness (in)</label> <input id="thickness" type="number" value="0.5" />
+                      <p>1/16" or 0.0625 recommended for seal coats<br>1/8" or  0.125 recommended for flood coating</p>
+                      <table class="calculator-table">
+                        <tbody>
+                        <tr>
+                        <td>1/16" = 0.0625</td>
+                        <td>1/8" = 0.125</td>
+                        <td>1/4" = 0.25</td>
+                        <td>3/8" = 0.375</td>
+                        </tr>
+                        <tr>
+                        <td>1/2" = 0.50</td>
+                        <td>5/8" = 0.625</td>
+                        <td>3/4" = 0.75</td>
+                        <td>7/8" = 0.875</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="flex-50">
+                      <div class="results">
+                        <h4>Here is the volume of your project</h4>
+                        <div class="flex flex-results">
+                        <p>Cubic Inches (in<sup>3</sup>)</sup><span id="cubic-inches">72</span></p>
+                        <p>Cubic Feet (ft<sup>3</sup>)<span id="cubic-feet">0.04</span></p>
+                      </div>
+                        <h4>Here is the amount of mixed epoxy you will need</h4>
+                        <div class="flex flex-results">
+                          <p>Ounces (oz)<span id="ounces">39.89</span></p>
+                          <p>Gallons (gal)<span id="gallons">0.31</span></p>
+                          <p>Milliliters (mL)<span id="milliliters">1179.9</span></p>
+                          <p>Liters (L)<span id="liters">1.18</span></p>
+                          
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <h3 class="text-center">Want to Know Exactly How Much to Mix?</h3>
+                  
+                  <div class="flex flex-top">
+                    <div class="flex-50">
+                      <h4>What epoxy system are you using?</h4>
+                      <select id="epoxy-resin-volume-calculator-product">
+                        <option value="" selected="selected">Choose a product</option>
+                        <option value="artpro">Art Pro</option>
+                        <option value="deeppour">Deep Pour</option>
+                        <option value="deeppourx">Deep Pour X</option>
+                        <option value="penetrating">Penetrating Epoxy Sealer</option>
+                        <option value="tabletoppro">Table Top Pro</option>
+                        <option value="anniesartkit">Annie's Art Kit</option>
+                      </select>
+                      <div id="product-listing"></div>
+                    </div>
+                    <div class="flex-50">
+                      <div class="results" id="product-results">
+                        <h4 id="mixVolume"></h4>
+                        <div class="flex flex-results">
+                        <p>(Part A) US fl oz<span id="product-a-volume"></span></p>
+                        <p>(Part B) US fl oz<span id="product-b-volume"></span></p>
+                        <p>Total US fl oz<span id="product-volume"></span></p>
+                      </div>
+                      <h4 id="mixWeight"></h4>
+                      <div class="flex flex-results">
+                      <p>(Part A) grams<span id="product-a-weight"></span></p>
+                      <p>(Part B) grams<span id="product-b-weight"></span></p>
+                      <p>Total grams<span id="product-weight"></span></p>
+                    </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                  
+                  <div id="mix-ratios-volume">
+                  <h3>Mix Ratio by Volume</h3>
+                  <h4>These calculators will help you determine the exact mixing proportions by volume</h4>
+                  <div class="grid-3">
+                  <div id="mix-ratio-2" class="box">
+                  <h3>2:1 Epoxy Resin Systems</h3>
+                  <h4>Flag or LV, Deep Pour X, Penetrating, Annie's Art Kit</h4>
+                  <label for="part-a-mix2">Resin (Part A)</label> <input id="part-a-mix2" type="number" value="2" /> <br /> <label for="part-b-mix2">Hardener (Part B)</label> <input id="part-b-mix2" type="number" value="1" />
+                  <div class="results">
+                  <h3>Project Volume</h3>
+                  <p>2:1 Total Volume <span id="total-volume-2">3</span></p>
+                  </div>
+                  </div>
+                  <div id="mix-ratio-3" class="box">
+                  <h3>3:1 Epoxy Resin Systems</h3>
+                  <h4>Deep Pour</h4>
+                  <label for="part-a-mix3">Resin (Part A)</label> <input id="part-a-mix3" type="number" value="3" /> <br /> <label for="part-b-mix3">Hardener (Part B)</label> <input id="part-b-mix3" type="number" value="1" />
+                  <div class="results">
+                  <h3>Project Volume</h3>
+                  <p>3:1 Total Volume <span id="total-volume-3">4</span></p>
+                  </div>
+                  </div>
+                  <div id="mix-ratio-5" class="box">
+                  <h3>5:1 Epoxy Resin Systems</h3>
+                  <h4>Traditional Marine</h4>
+                  <label for="part-a-mix5">Resin (Part A)</label> <input id="part-a-mix5" type="number" value="5" /> <br /> <label for="part-b-mix5">Hardener (Part B)</label> <input id="part-b-mix5" type="number" value="1" />
+                  <div class="results">
+                  <h3>Project Volume</h3>
+                  <p>5:1 Total Volume <span id="total-volume-5">6</span></p>
+                  </div>
+                </div>
+                  </div>
+                  </div>
+
+<!-- Circle Calc -->
+                <div id="circle-volume-calculator">
+                  
+                  <h3>Round or Circular Volume Calculator</h3>
+
+                  <div class="flex flex-top">
+                    <div class="flex-50">
+                      <h4>What is the diameter and desired thickness of epoxy resin? </h4>
+                  <label for="diameter">Diameter (in)</label> <input id="diameter" type="number" value="8" />
+                  <label for="thickness">Thickness (in)</label> <input id="thickness" type="number" value="0.25" /><hr />
+                  <p>1/16" or 0.0625 recommended for seal coats<br>1/8" or  0.125 recommended for flood coating</p>
+                  <table class="calculator-table">
+                    <tbody>
+                    <tr>
+                    <td>1/16" = 0.0625</td>
+                    <td>1/8" = 0.125</td>
+                    <td>1/4" = 0.25</td>
+                    <td>3/8" = 0.375</td>
+                    </tr>
+                    <tr>
+                    <td>1/2" = 0.50</td>
+                    <td>5/8" = 0.625</td>
+                    <td>3/4" = 0.75</td>
+                    <td>7/8" = 0.875</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    <div class="flex-50">
+                  <div class="results">
+                  <h4>Project Volume</h4>
+                  <div class="flex flex-results">
+                  <p>Cubic Inches<span id="cubic-inches">12.56</span></p>
+                  <p>Cubic Feet<span id="cubic-feet">0.01</span></p>
+                </div>
+                  <h4>Here is the amount of mixed resin you will need</h4>
+                  <div class="flex flex-results">
+                  <p>Ounces<span id="ounces">6.96</span></p>
+                  <p>Liters<span id="liters">0.21</span></p>
+                  <p>Gallons<span id="gallons">0.05</span></p>
+                  </div>
+                </div>
+                  </div>
+                </div>
+                </div>
+
+
+      <!--  Mix Ratio by Weight -->
+      <div id="mix-ratios-weight">
+        <h3>Mix Ratio by Weight</h3>
+        <h4>These calculators will help you determine the exact mixing proportions by weight</h4>
+        <div class="grid-3">
+
+        <!-- Table Top -->
+        <div id="mix-ratio-tabletop" class="box">
+        <h3>Table Top Pro by Weight</h3>
+        <label for="part-a-tabletop">Table Top Resin (Part A)</label> <input id="part-a-tabletop" type="number" value="100" /> <br /> 
+        <label for="part-b-tabletop">Table Top Hardener (Part B)</label> <input id="part-b-tabletop" type="number" value="83" /> <br />
+        <label for="weight-tabletop">Total Weight</label> <input id="weight-tabletop" type="number" value="183" />
+        </div>
+
+        <!-- Art Pro -->
+        <div id="mix-ratio-artpro" class="box">
+          <h3>Art Pro by Weight</h3>
+          <label for="part-a-artpro">Art Pro Resin (Part A)</label> <input id="part-a-artpro" type="number" value="100" /> <br /> 
+          <label for="part-b-artpro">Art Pro Hardener (Part B)</label> <input id="part-b-artpro" type="number" value="84" /> <br />
+          <label for="weight-artpro">Total Weight</label> <input id="weight-artpro" type="number" value="184" />
+          </div>
+
+          <!-- Deeppour -->
+        <div id="mix-ratio-deeppour" class="box">
+          <h3>Deep Pour by Weight</h3>
+          <label for="part-a-deeppour">Deep Pour Resin (Part A)</label> <input id="part-a-deeppour" type="number" value="100" /> <br /> 
+          <label for="part-b-deeppour">Deep Pour Hardener (Part B)</label> <input id="part-b-deeppour" type="number" value="28" /> <br />
+          <label for="weight-deeppour">Total Weight</label> <input id="weight-deeppour" type="number" value="128" />
+          </div>
+
+          <!-- DeeppourX -->
+        <div id="mix-ratio-deeppourx" class="box">
+          <h3>Deep Pour <span>X</span> by Weight</h3>
+          <label for="part-a-deeppourx">Deep Pour X Resin (Part A)</label> <input id="part-a-deeppourx" type="number" value="100" /> <br /> 
+          <label for="part-b-deeppourx">Deep Pour X Hardener (Part B)</label> <input id="part-b-deeppourx" type="number" value="43" /> <br />
+          <label for="weight-deeppourx">Total Weight</label> <input id="weight-deeppourx" type="number" value="143" />
+          </div>
+  
+          <!-- Penetrating -->
+          <div id="mix-ratio-penetrating" class="box">
+            <h3>Penetrating Epoxy Sealer by Weight</h3>
+            <label for="part-a-penetrating">Penetrating Resin (Part A)</label> <input id="part-a-penetrating" type="number" value="100" /> <br /> 
+            <label for="part-b-penetrating">Penetrating Hardener (Part B)</label> <input id="part-b-penetrating" type="number" value="43" /> <br />
+            <label for="weight-penetrating">Total Weight</label> <input id="weight-penetrating" type="number" value="143" />
+            </div>
+
+          <!-- Annie's Art Kit -->
+          <div id="mix-ratio-annies" class="box">
+            <h3>Annie's Art Kit by Weight</h3>
+            <label for="part-a-annies">Annie's Art Kit Resin (Part A)</label> <input id="part-a-annies" type="number" value="100" /> <br /> 
+            <label for="part-b-annies">Annie's Art Kit Hardener (Part B)</label> <input id="part-b-annies" type="number" value="45" /> <br />
+            <label for="weight-annies">Total Weight</label> <input id="weight-annies" type="number" value="145" />
+            </div>
+             
+  
+            <!-- Flag or LV Slow -->
+<div id="mix-ratio-lv" class="box">
+  <h3>Flag or LV <span>Slow or Medium</span> by Weight</h3>
+  <label for="part-a-lv-slow">Flag or LV Resin (Part A)</label> <input id="part-a-lv-slow" type="number" value="100" /> <br /> 
+  <label for="part-b-lv-slow">Flag or LV Slow Hardener Hardener (Part B)</label> <input id="part-b-lv-slow" type="number" value="45" />
+  <label for="weight-lv-slow">Total Weight</label> <input id="weight-lv-slow" type="number" value="145" />
+  </div>
+
+  <!-- Flag or LV Fast -->
+<div id="mix-ratio-lv" class="box">
+  <h3>Flag or LV <span>Fast</span> by Weight</h3>
+  <label for="part-a-lv-fast">Flag or LV Resin (Part A)</label> <input id="part-a-lv-fast" type="number" value="100" /> <br /> 
+  <label for="part-b-lv-fast">Flag or LV Medium / Fast Hardener ( Part B)</label> <input id="part-b-lv-fast" type="number" value="46" />
+  <label for="weight-lv-fast">Total Weight</label> <input id="weight-lv-fast" type="number" value="146" />
+  </div>
+
+  <!-- Marine Slow -->
+  <div id="mix-ratio-marine" class="box">
+    <h3>Traditional Marine Epoxy <span>520 Slow or 510 Fast</span> by Weight</h3>
+    <label for="part-a-marine-520">Traditional Marine Resin (Part A)</label> <input id="part-a-marine-520" type="number" value="100" /> <br /> 
+    <label for="part-b-marine-520">520 Slow or 510 Fast Hardener (Part B)</label> <input id="part-b-marine-520" type="number" value="18" />
+    <label for="weight-marine-520">Total Weight</label> <input id="weight-marine-520" type="number" value="118" />
+    </div>
+
+    <!-- Marine Clear -->
+  <div id="mix-ratio-marine" class="box">
+    <h3>Traditional Marine Epoxy <span>320 Clear</span> by Weight</h3>
+    <label for="part-a-marine-320">Traditional Marine Resin (Part A)</label> <input id="part-a-marine-320" type="number" value="100" /> <br /> 
+    <label for="part-b-marine-320">320 Clear Hardener (Part B)</label> <input id="part-b-marine-320" type="number" value="30" />
+    <label for="weight-marine-320">Total Weight</label> <input id="weight-marine-320" type="number" value="130" />
+    </div>
+
+ 
+    </div>
+        </div>
+        
+        </div>
+
+        {{{region name="calculator_middle"}}}
+
+        <div class="page-content">{{{page.content}}}</div>
+
+        {{{region name="calculator_bottom"}}}
+    
+    </main>
+</div>
+
+{{/partial}}
+
+
+  
+
+{{> layout/base}}
+
+
+<script>
+  // Constants
+  const cubicFeet = 1728;
+  const ounces = 1.805;
+  const gallons = 231;
+  const milliliters = 16.3871;
+  const liters = 61.024;
+  const grams = 454; // 1 lb = 453.592 grams
+  </script>
+
+  <script>
+    // Epoxy Resin Volume Calculator
+  var lengthERVC = $("#epoxy-resin-volume-calculator #length");
+  var widthERVC = $("#epoxy-resin-volume-calculator #width");
+  var thicknessERVC = $("#epoxy-resin-volume-calculator #thickness");
+  $("#epoxy-resin-volume-calculator input").keyup(function () {
+    calcERVC();
+  });
+  function calcERVC() {
+    var epoxyCubicInches = lengthERVC.val() * widthERVC.val() * thicknessERVC.val();
+    var epoxyCubicFeet = epoxyCubicInches / cubicFeet;
+    var epoxyOunces = epoxyCubicInches / ounces;
+    var epoxyGallons = epoxyCubicInches / gallons;
+    var epoxyMilliliters = epoxyCubicInches * milliliters;
+    var epoxyLiters = epoxyCubicInches / liters;
+    $("#epoxy-resin-volume-calculator .results #cubic-inches").html(epoxyCubicInches.toFixed(2));
+    $("#epoxy-resin-volume-calculator .results #cubic-feet").html(epoxyCubicFeet.toFixed(2));
+    $("#epoxy-resin-volume-calculator .results #ounces").html(epoxyOunces.toFixed(2));
+    $("#epoxy-resin-volume-calculator .results #gallons").html(epoxyGallons.toFixed(2));
+    $("#epoxy-resin-volume-calculator .results #milliliters").html(epoxyMilliliters.toFixed(2));
+    $("#epoxy-resin-volume-calculator .results #liters").html(epoxyLiters.toFixed(2));
+  }
+  // Product Volume & Weight
+  var productSelection = $("#epoxy-resin-volume-calculator-product");
+  $("#product-results").hide();
+  var productAVolume = $("#product-a-volume");
+  var productBVolume = $("#product-b-volume");
+  var productVolume = $("#product-volume");
+  var productAWeight = $("#product-a-weight");
+  var productBWeight = $("#product-b-weight");
+  var productWeight = $("#product-weight");
+
+  $("#epoxy-resin-volume-calculator-product").change(function () {
+    $("#product-results").show();
+    calcERVCP();
+  });
+  function calcERVCP() {
+    var productRatio = productSelection.val();
+    var epoxyOunces = $("#epoxy-resin-volume-calculator .results #ounces"); // Volume
+    var projectInches = $("#epoxy-resin-volume-calculator .results #cubic-inches"); // Weight
+    switch(productRatio) {
+      case "artpro":
+        var artAVolume = epoxyOunces.html() / 2;
+        var artBVolume = epoxyOunces.html() / 2;
+        productAVolume.html(artAVolume.toFixed(2));
+        productBVolume.html(artBVolume.toFixed(2));
+        productVolume.html((artAVolume + artBVolume).toFixed(2));
+        var artMixWeigthgrams = projectInches.html() / 25 * grams / 184;
+        var artAWeight = artMixWeigthgrams * 100;
+        var artBWeight = artMixWeigthgrams * 84;
+        productAWeight.html(artAWeight.toFixed(2));
+        productBWeight.html(artBWeight.toFixed(2));
+        productWeight.html((artAWeight + artBWeight).toFixed(2));
+        $("#product-listing").html(`<div class="bc-buy-button" id="bc-sku-30-362" style="width:295px;height:435px">
+        <iframe
+          src="https://ad.buybutton.store/card/v1.5/8rejm4fv6m?action=product&open_in=popup&src=calculator_page&btn_text=Select Options&overlay_text=View Product&btn_color=000&title_color=000&price_color=000&ga_id=null&sku=30-362"
+          border="0"
+          scrolling="no"
+          horizontalscrolling="no"
+          verticalscrolling="no"
+          allowtransparency="true"
+          width="100%"
+          height="100%"
+          style="overflow: hidden; border: none; width=100%; height=100%;">
+        </iframe>
+      </div>`);
+      
+      $('#product-results #mixVolume').html('1A:1B Mix Ratio by Volume');
+      $('#product-results #mixWeight').html('100A:84B Mix Ratio by Weight');
+        break;
+      case "deeppour":
+        var deepAVolume = epoxyOunces.html() / 4 * 3;
+        var deepBVolume = epoxyOunces.html() / 4;
+        productAVolume.html(deepAVolume.toFixed(2));
+        productBVolume.html(deepBVolume.toFixed(2));
+        productVolume.html((deepAVolume + deepBVolume).toFixed(2));
+        var deepMixWeigthgrams = projectInches.html() / 25 * grams / 128;
+        var deepAWeight = deepMixWeigthgrams * 100;
+        var deepBWeight = deepMixWeigthgrams * 28;
+        productAWeight.html(deepAWeight.toFixed(2));
+        productBWeight.html(deepBWeight.toFixed(2));
+        productWeight.html((deepAWeight + deepBWeight).toFixed(2));
+      $("#product-listing").html(`<div class="bc-buy-button" id="bc-sku-30-400" style="width:295px;height:435px">
+        <iframe
+          src="https://ad.buybutton.store/card/v1.5/8rejm4fv6m?action=product&open_in=popup&src=calculator_page&btn_text=Select Options&overlay_text=View Product&btn_color=000&title_color=000&price_color=000&ga_id=null&sku=30-400"
+          border="0"
+          scrolling="no"
+          horizontalscrolling="no"
+          verticalscrolling="no"
+          allowtransparency="true"
+          width="100%"
+          height="100%"
+          style="overflow: hidden; border: none; width=100%; height=100%;">
+        </iframe>
+      </div>`);
+      
+      $('#product-results #mixVolume').html('3A:1B Mix Ratio by Volume');
+      $('#product-results #mixWeight').html('100A:28B Mix Ratio by Weight');
+        break;
+      case "deeppourx":
+        var deepxAVolume = epoxyOunces.html() / 3 * 2;
+        var deepxBVolume = epoxyOunces.html() / 3;
+        productAVolume.html(deepxAVolume.toFixed(2));
+        productBVolume.html(deepxBVolume.toFixed(2));
+        productVolume.html((deepxAVolume + deepxBVolume).toFixed(2));
+        var deepxMixWeigthgrams = projectInches.html() / 25 * grams / 143;
+        var deepxAWeight = deepxMixWeigthgrams * 100;
+        var deepxBWeight = deepxMixWeigthgrams * 43;
+        productAWeight.html(deepxAWeight.toFixed(2));
+        productBWeight.html(deepxBWeight.toFixed(2));
+        productWeight.html((deepxAWeight + deepxBWeight).toFixed(2));
+        $("#product-listing").html(`<div class="bc-buy-button" id="bc-sku-30-480" style="width:295px;height:435px">
+        <iframe
+          src="https://ad.buybutton.store/card/v1.5/8rejm4fv6m?action=product&open_in=popup&src=calculator_page&btn_text=Select Options&overlay_text=View Product&btn_color=000&title_color=000&price_color=000&ga_id=null&sku=30-480"
+          border="0"
+          scrolling="no"
+          horizontalscrolling="no"
+          verticalscrolling="no"
+          allowtransparency="true"
+          width="100%"
+          height="100%"
+          style="overflow: hidden; border: none; width=100%; height=100%;">
+        </iframe>
+      </div>`);
+      $('#product-results #mixVolume').html('2A:1B Mix Ratio by Volume');
+      $('#product-results #mixWeight').html('100A:43B Mix Ratio by Weight');
+        break;
+      case "penetrating":
+        var penAVolume = epoxyOunces.html() / 3 * 2;
+        var penBVolume = epoxyOunces.html() / 3;
+        productAVolume.html(penAVolume.toFixed(2));
+        productBVolume.html(penBVolume.toFixed(2));
+        productVolume.html((penAVolume + penBVolume).toFixed(2));
+        var penMixWeigthgrams = projectInches.html() / 25 * grams / 143;
+        var penAWeight = penMixWeigthgrams * 100;
+        var penBWeight = penMixWeigthgrams * 43;
+        productAWeight.html(penAWeight.toFixed(2));
+        productBWeight.html(penBWeight.toFixed(2));
+        productWeight.html((penAWeight + penBWeight).toFixed(2));
+        $("#product-listing").html(`<div class="bc-buy-button" id="bc-sku-30-220" style="width:295px;height:435px">
+        <iframe
+          src="https://ad.buybutton.store/card/v1.5/8rejm4fv6m?action=product&open_in=popup&src=calculator_page&btn_text=Select Options&overlay_text=View Product&btn_color=000&title_color=000&price_color=000&ga_id=null&sku=30-220"
+          border="0"
+          scrolling="no"
+          horizontalscrolling="no"
+          verticalscrolling="no"
+          allowtransparency="true"
+          width="100%"
+          height="100%"
+          style="overflow: hidden; border: none; width=100%; height=100%;">
+        </iframe>
+      </div>`);
+      $('#product-results #mixVolume').html('2A:1B Mix Ratio by Volume');
+      $('#product-results #mixWeight').html('100A:43B Mix Ratio by Weight');
+        break;
+      case "tabletoppro":
+        var tableAVolume = epoxyOunces.html() / 2;
+        var tableBVolume = epoxyOunces.html() / 2;
+        productAVolume.html(tableAVolume.toFixed(2));
+        productBVolume.html(tableBVolume.toFixed(2));
+        productVolume.html((tableAVolume + tableBVolume).toFixed(2));
+        var tableMixWeigthgrams = projectInches.html() / 25 * grams / 183;
+        var tableAWeight = tableMixWeigthgrams * 100;
+        var tableBWeight = tableMixWeigthgrams * 83;
+        productAWeight.html(tableAWeight.toFixed(2));
+        productBWeight.html(tableBWeight.toFixed(2));
+        productWeight.html((tableAWeight + tableBWeight).toFixed(2));
+        $("#product-listing").html(`<div class="bc-buy-button" id="bc-sku-30-262" style="width:295px;height:435px">
+        <iframe
+          src="https://ad.buybutton.store/card/v1.5/8rejm4fv6m?action=product&open_in=popup&src=calculator_page&btn_text=Select Options&overlay_text=View Product&btn_color=000&title_color=000&price_color=000&ga_id=null&sku=30-262"
+          border="0"
+          scrolling="no"
+          horizontalscrolling="no"
+          verticalscrolling="no"
+          allowtransparency="true"
+          width="100%"
+          height="100%"
+          style="overflow: hidden; border: none; width=100%; height=100%;">
+        </iframe>
+      </div>`);
+      $('#product-results #mixVolume').html('1A:1B Mix Ratio by Volume');
+      $('#product-results #mixWeight').html('100A:83B Mix Ratio by Weight');
+        break;
+      case "anniesartkit":
+        var tableAVolume = epoxyOunces.html() / 3 * 2;
+        var tableBVolume = epoxyOunces.html() / 3;
+        productAVolume.html(tableAVolume.toFixed(2));
+        productBVolume.html(tableBVolume.toFixed(2));
+        productVolume.html((tableAVolume + tableBVolume).toFixed(2));
+        var tableMixWeigthgrams = projectInches.html() / 25 * grams / 145;
+        var tableAWeight = tableMixWeigthgrams * 100;
+        var tableBWeight = tableMixWeigthgrams * 45;
+        productAWeight.html(tableAWeight.toFixed(2));
+        productBWeight.html(tableBWeight.toFixed(2));
+        productWeight.html((tableAWeight + tableBWeight).toFixed(2));
+        $("#product-listing").html(`<div class="bc-buy-button" id="bc-sku-30-262" style="width:295px;height:435px">
+        <iframe
+          src="https://ad.buybutton.store/card/v1.5/8rejm4fv6m?action=product&open_in=popup&src=calculator_page&btn_text=Select Options&overlay_text=View Product&btn_color=000&title_color=000&price_color=000&ga_id=null&sku=30-262"
+          border="0"
+          scrolling="no"
+          horizontalscrolling="no"
+          verticalscrolling="no"
+          allowtransparency="true"
+          width="100%"
+          height="100%"
+          style="overflow: hidden; border: none; width=100%; height=100%;">
+        </iframe>
+      </div>`);
+      $('#product-results #mixVolume').html('2A:1B Mix Ratio by Volume');
+      $('#product-results #mixWeight').html('100A:45B Mix Ratio by Weight');
+        break;
+      default:
+        $("#product-results").hide();
+    } 
+    
+  }
+</script>
+
+<script>
+  // Circle Volume Calculator
+var diameterCVC = $("#circle-volume-calculator #diameter");
+var thicknessCVC = $("#circle-volume-calculator #thickness");
+$("#circle-volume-calculator input").keyup(function () {
+  calcCVC();
+});
+function calcCVC() {
+  console.log(diameterCVC.val());
+  var epoxyCubicInches = Math.pow((diameterCVC.val() / 2), 2) * Math.PI * thicknessCVC.val();
+  var epoxyCubicFeet = epoxyCubicInches / cubicFeet;
+  var epoxyOunces = epoxyCubicInches / ounces;
+  var epoxyLiters = epoxyCubicInches / liters;
+  var epoxyGallons = epoxyCubicInches / gallons;
+  $("#circle-volume-calculator .results #cubic-inches").html(epoxyCubicInches.toFixed(2));
+  $("#circle-volume-calculator .results #cubic-feet").html(epoxyCubicFeet.toFixed(2));
+  $("#circle-volume-calculator .results #ounces").html(epoxyOunces.toFixed(2));
+  $("#circle-volume-calculator .results #liters").html(epoxyLiters.toFixed(2));
+  $("#circle-volume-calculator .results #gallons").html(epoxyGallons.toFixed(2));
+}
+</script>
+
+<script>
+  /* Mix Ratios by Volume */
+  // 2:1 Mix Ratio
+  $("#part-a-mix2").keyup(function () {
+    $("#mix-ratios-volume #part-b-mix2").val($("#mix-ratios-volume #part-a-mix2").val()/2);
+    $("#mix-ratios-volume .results #total-volume-2").html(+$("#mix-ratios-volume #part-a-mix2").val() + +$("#mix-ratios-volume #part-b-mix2").val());
+  });
+  $("#part-b-mix2").keyup(function () {
+    $("#mix-ratios-volume #part-a-mix2").val($("#mix-ratios-volume #part-b-mix2").val()*2);
+    $("#mix-ratios-volume .results #total-volume-2").html(+$("#mix-ratios-volume #part-a-mix2").val() + +$("#mix-ratios-volume #part-b-mix2").val());
+  });
+// 3:1 Mix Ratio
+$("#part-a-mix3").keyup(function () {
+  $("#mix-ratios-volume #part-b-mix3").val($("#mix-ratios-volume #part-a-mix3").val()*(1/3));
+  $("#mix-ratios-volume .results #total-volume-3").html(+$("#mix-ratios-volume #part-a-mix3").val() + +$("#mix-ratios-volume #part-b-mix3").val());
+});
+$("#part-b-mix3").keyup(function () {
+  $("#mix-ratios-volume #part-a-mix3").val($("#mix-ratios-volume #part-b-mix3").val()/(1/3));
+  $("#mix-ratios-volume .results #total-volume-3").html(+$("#mix-ratios-volume #part-a-mix3").val() + +$("#mix-ratios-volume #part-b-mix3").val());
+});
+// 5:1 Mix Ratio
+$("#part-a-mix5").keyup(function () {
+  $("#mix-ratios-volume #part-b-mix5").val($("#mix-ratios-volume #part-a-mix5").val()/5);
+  $("#mix-ratios-volume .results #total-volume-5").html(+$("#mix-ratios-volume #part-a-mix5").val() + +$("#mix-ratios-volume #part-b-mix5").val());
+});
+$("#part-b-mix5").keyup(function () {
+  $("#mix-ratios-volume #part-a-mix5").val($("#mix-ratios-volume #part-b-mix5").val()*5);
+  $("#mix-ratios-volume .results #total-volume-5").html(+$("#mix-ratios-volume #part-a-mix5").val() + +$("#mix-ratios-volume #part-b-mix5").val());
+});
+</script>
+
+
+
+<script>
+  /* Mix Ratios by Weight */
+  // Table Top Mix Ratio
+  $("#part-a-tabletop").keyup(function () {
+    $("#mix-ratios-weight #part-b-tabletop").val($("#mix-ratios-weight #part-a-tabletop").val()*0.83);
+    $("#mix-ratios-weight #weight-tabletop").val(+$("#mix-ratios-weight #part-a-tabletop").val() + +$("#mix-ratios-weight #part-b-tabletop").val());
+  });
+  $("#part-b-tabletop").keyup(function () {
+    $("#mix-ratios-weight #part-a-tabletop").val($("#mix-ratios-weight #part-b-tabletop").val()/0.83);
+    $("#mix-ratios-weight #weight-tabletop").val(+$("#mix-ratios-weight #part-a-tabletop").val() + +$("#mix-ratios-weight #part-b-tabletop").val());
+  });
+  $("#weight-tabletop").keyup(function () {
+    $("#mix-ratios-weight #part-a-tabletop").val($("#mix-ratios-weight #weight-tabletop").val()/183*100);
+    $("#mix-ratios-weight #part-b-tabletop").val(+$("#mix-ratios-weight #weight-tabletop").val()/183*83);
+  });
+  // Art Pro Mix Ratio
+  $("#part-a-artpro").keyup(function () {
+    $("#mix-ratios-weight #part-b-artpro").val($("#mix-ratios-weight #part-a-artpro").val()*0.84);
+    $("#mix-ratios-weight #weight-artpro").val(+$("#mix-ratios-weight #part-a-artpro").val() + +$("#mix-ratios-weight #part-b-artpro").val());
+  });
+  $("#part-b-artpro").keyup(function () {
+    $("#mix-ratios-weight #part-a-artpro").val($("#mix-ratios-weight #part-b-artpro").val()/0.84);
+    $("#mix-ratios-weight #weight-artpro").val(+$("#mix-ratios-weight #part-a-artpro").val() + +$("#mix-ratios-weight #part-b-artpro").val());
+  });
+  $("#weight-artpro").keyup(function () {
+    $("#mix-ratios-weight #part-a-artpro").val($("#mix-ratios-weight #weight-artpro").val()/184*100);
+    $("#mix-ratios-weight #part-b-artpro").val(+$("#mix-ratios-weight #weight-artpro").val()/184*84);
+  });
+  // Deeppour Mix Ratio
+  $("#part-a-deeppour").keyup(function () {
+    $("#mix-ratios-weight #part-b-deeppour").val($("#mix-ratios-weight #part-a-deeppour").val()*0.28);
+    $("#mix-ratios-weight #weight-deeppour").val(+$("#mix-ratios-weight #part-a-deeppour").val() + +$("#mix-ratios-weight #part-b-deeppour").val());
+  });
+  $("#part-b-deeppour").keyup(function () {
+    $("#mix-ratios-weight #part-a-deeppour").val($("#mix-ratios-weight #part-b-deeppour").val()/0.28);
+    $("#mix-ratios-weight #weight-deeppour").val(+$("#mix-ratios-weight #part-a-deeppour").val() + +$("#mix-ratios-weight #part-b-deeppour").val());
+  });
+  $("#weight-deeppour").keyup(function () {
+    $("#mix-ratios-weight #part-a-deeppour").val($("#mix-ratios-weight #weight-deeppour").val()/128*100);
+    $("#mix-ratios-weight #part-b-deeppour").val(+$("#mix-ratios-weight #weight-deeppour").val()/128*28);
+  });
+  // Deeppourx Mix Ratio
+  $("#part-a-deeppourx").keyup(function () {
+    $("#mix-ratios-weight #part-b-deeppourx").val($("#mix-ratios-weight #part-a-deeppourx").val()*0.43);
+    $("#mix-ratios-weight #weight-deeppourx").val(+$("#mix-ratios-weight #part-a-deeppourx").val() + +$("#mix-ratios-weight #part-b-deeppourx").val());
+  });
+  $("#part-b-deeppourx").keyup(function () {
+    $("#mix-ratios-weight #part-a-deeppourx").val($("#mix-ratios-weight #part-b-deeppourx").val()/0.43);
+    $("#mix-ratios-weight #weight-deeppourx").val(+$("#mix-ratios-weight #part-a-deeppourx").val() + +$("#mix-ratios-weight #part-b-deeppourx").val());
+  });
+  $("#weight-deeppourx").keyup(function () {
+    $("#mix-ratios-weight #part-a-deeppourx").val($("#mix-ratios-weight #weight-deeppourx").val()/143*100);
+    $("#mix-ratios-weight #part-b-deeppourx").val(+$("#mix-ratios-weight #weight-deeppourx").val()/143*43);
+  });
+  // Penetrating Mix Ratio
+  $("#part-a-penetrating").keyup(function () {
+    $("#mix-ratios-weight #part-b-penetrating").val($("#mix-ratios-weight #part-a-penetrating").val()*0.43);
+    $("#mix-ratios-weight #weight-penetrating").val(+$("#mix-ratios-weight #part-a-penetrating").val() + +$("#mix-ratios-weight #part-b-penetrating").val());
+  });
+  $("#part-b-penetrating").keyup(function () {
+    $("#mix-ratios-weight #part-a-penetrating").val($("#mix-ratios-weight #part-b-penetrating").val()/0.43);
+    $("#mix-ratios-weight #weight-penetrating").val(+$("#mix-ratios-weight #part-a-penetrating").val() + +$("#mix-ratios-weight #part-b-penetrating").val());
+  });
+  $("#weight-penetrating").keyup(function () {
+    $("#mix-ratios-weight #part-a-penetrating").val($("#mix-ratios-weight #weight-penetrating").val()/143*100);
+    $("#mix-ratios-weight #part-b-penetrating").val(+$("#mix-ratios-weight #weight-penetrating").val()/143*43);
+  });
+  // Annies Mix Ratio
+  $("#part-a-annies").keyup(function () {
+    $("#mix-ratios-weight #part-b-annies").val($("#mix-ratios-weight #part-a-annies").val()*0.45);
+    $("#mix-ratios-weight #weight-annies").val(+$("#mix-ratios-weight #part-a-annies").val() + +$("#mix-ratios-weight #part-b-annies").val());
+  });
+  $("#part-b-annies").keyup(function () {
+    $("#mix-ratios-weight #part-a-annies").val($("#mix-ratios-weight #part-b-annies").val()/0.45);
+    $("#mix-ratios-weight #weight-annies").val(+$("#mix-ratios-weight #part-a-annies").val() + +$("#mix-ratios-weight #part-b-annies").val());
+  });
+  $("#weight-annies").keyup(function () { 
+    $("#mix-ratios-weight #part-a-annies").val($("#mix-ratios-weight #weight-annies").val()/145*100);
+    $("#mix-ratios-weight #part-b-annies").val(+$("#mix-ratios-weight #weight-annies").val()/145*45);
+  });
+  // LV Slow Mix Ratio 
+  $("#part-a-lv-slow").keyup(function () {
+    $("#mix-ratios-weight #part-b-lv-slow").val($("#mix-ratios-weight #part-a-lv-slow").val()*0.45);
+    $("#mix-ratios-weight #weight-lv-slow").val(+$("#mix-ratios-weight #part-a-lv-slow").val() + +$("#mix-ratios-weight #part-b-lv-slow").val());
+  });
+  $("#part-b-lv-slow").keyup(function () {
+    $("#mix-ratios-weight #part-a-lv-slow").val($("#mix-ratios-weight #part-b-lv-slow").val()/0.45);
+    $("#mix-ratios-weight #weight-lv-slow").val(+$("#mix-ratios-weight #part-a-lv-slow").val() + +$("#mix-ratios-weight #part-b-lv-slow").val());
+  });
+  $("#weight-lv-slow").keyup(function () {
+    $("#mix-ratios-weight #part-a-lv-slow").val($("#mix-ratios-weight #weight-lv-slow").val()/145*100);
+    $("#mix-ratios-weight #part-b-lv-slow").val(+$("#mix-ratios-weight #weight-lv-slow").val()/145*45);
+  });
+  // LV Fast Mix Ratio 
+  $("#part-a-lv-fast").keyup(function () {
+    $("#mix-ratios-weight #part-b-lv-fast").val($("#mix-ratios-weight #part-a-lv-fast").val()*0.46);
+    $("#mix-ratios-weight #weight-lv-fast").val(+$("#mix-ratios-weight #part-a-lv-fast").val() + +$("#mix-ratios-weight #part-b-lv-fast").val());
+  });
+  $("#part-b-lv-fast").keyup(function () {
+    $("#mix-ratios-weight #part-a-lv-fast").val($("#mix-ratios-weight #part-b-lv-fast").val()/0.46);
+    $("#mix-ratios-weight #weight-lv-fast").val(+$("#mix-ratios-weight #part-a-lv-fast").val() + +$("#mix-ratios-weight #part-b-lv-fast").val());
+  });
+  $("#weight-lv-fast").keyup(function () {
+    $("#mix-ratios-weight #part-a-lv-fast").val($("#mix-ratios-weight #weight-lv-fast").val()/146*100);
+    $("#mix-ratios-weight #part-b-lv-fast").val(+$("#mix-ratios-weight #weight-lv-fast").val()/146*46);
+  });
+
+
+  // Marine 520 Mix Ratio
+  $("#part-a-marine-520").keyup(function () {
+    $("#mix-ratios-weight #part-b-marine-520").val($("#mix-ratios-weight #part-a-marine-520").val()*0.18);
+    $("#mix-ratios-weight #weight-marine-520").val(+$("#mix-ratios-weight #part-a-marine-520").val() + +$("#mix-ratios-weight #part-b-marine-520").val());
+  });
+  $("#part-b-marine-520").keyup(function () {
+    $("#mix-ratios-weight #part-a-marine-520").val($("#mix-ratios-weight #part-b-marine-520").val()/0.18);
+    $("#mix-ratios-weight #weight-marine-520").val(+$("#mix-ratios-weight #part-a-marine-520").val() + +$("#mix-ratios-weight #part-b-marine-520").val());
+  });
+  $("#weight-marine-520").keyup(function () {
+    $("#mix-ratios-weight #part-a-marine-520").val($("#mix-ratios-weight #weight-marine-520").val()/118*100);
+    $("#mix-ratios-weight #part-b-marine-520").val(+$("#mix-ratios-weight #weight-marine-520").val()/118*18);
+  });
+
+  // Marine 320 Mix Ratio
+  $("#part-a-marine-320").keyup(function () {
+    $("#mix-ratios-weight #part-b-marine-320").val($("#mix-ratios-weight #part-a-marine-320").val()*0.3);
+    $("#mix-ratios-weight #weight-marine-320").val(+$("#mix-ratios-weight #part-a-marine-320").val() + +$("#mix-ratios-weight #part-b-marine-320").val());
+  });
+  $("#part-b-marine-320").keyup(function () {
+    $("#mix-ratios-weight #part-a-marine-320").val($("#mix-ratios-weight #part-b-marine-320").val()/0.3);
+    $("#mix-ratios-weight #weight-marine-320").val(+$("#mix-ratios-weight #part-a-marine-320").val() + +$("#mix-ratios-weight #part-b-marine-320").val());
+  });
+  $("#weight-marine-320").keyup(function () {
+    $("#mix-ratios-weight #part-a-marine-320").val($("#mix-ratios-weight #weight-marine-320").val()/130*100);
+    $("#mix-ratios-weight #part-b-marine-320").val(+$("#mix-ratios-weight #weight-marine-320").val()/130*30);
+  });
+
+</script>

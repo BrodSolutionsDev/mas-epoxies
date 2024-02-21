@@ -1,0 +1,12 @@
+{{#if enabled}}	
+	{{#if theme_settings.epic_footer_heading_backgroundImage "==" ""}}
+		<section class="call-to-action-section">
+		{{else}}
+		<section class="call-to-action-section {{#if theme_settings.epic_footer_heading_parallax}}bg-parallax{{/if}}" style="background-image: url('{{getImage theme_settings.epic_footer_heading_backgroundImage}}');">
+		{{/if}}
+		<div class="container">
+		    <h3>{{theme_settings.epic_footer_cta_heading_text}}</h3>
+		    <p>{{theme_settings.epic_footer_cta_body_text}}</p>
+		</div>
+		</section>
+{{/if}}
