@@ -69,8 +69,21 @@
 
         {{#if product.main_image}}
         <script>
+            // create a new Image object
             let img = new Image();
+            // set the src to the product main image and replace {:size} with 640w
             img.src = "{{product.main_image.data}}".replace("{:size}", "640w");
+
+            /*
+            Note: 
+            640w seems to be the common mobile image size across all the themes. 
+            The image url from handlebars uses {:size} to dynamically generate the size
+            at build time. Using the handlebars for the product image allows us to grab
+            the url before the page loads and replace {:size} with 640w in the url.
+            Doing it this way seems to generate the best results on LCP, including
+            the warning on pagespeed.web.dev telling us to preload the LCP. This method
+            fixes that warning and loads the content the fastest.
+            */
         </script>
         {{/if}}
     </head>
