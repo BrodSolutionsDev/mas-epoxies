@@ -66,6 +66,13 @@
         {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
         {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
         {{~inject 'validationDefaultDictionaryJSON' (langJson 'default_messages')}} 
+
+        {{#if product.main_image}}
+        <script>
+            let img = new Image();
+            img.src = "{{product.main_image.data}}".replace("{:size}", "640w");
+        </script>
+        {{/if}}
     </head>
     <body>
         
