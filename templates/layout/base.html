@@ -75,7 +75,7 @@
             img.src = "{{product.main_image.data}}".replace("{:size}", "640w");
 
             /*
-            Note: 
+            *Note: 
             640w seems to be the common mobile image size across all the themes. 
             The image url from handlebars uses {:size} to dynamically generate the size
             at build time. Using the handlebars for the product image allows us to grab
@@ -83,6 +83,10 @@
             Doing it this way seems to generate the best results on LCP, including
             the warning on pagespeed.web.dev telling us to preload the LCP. This method
             fixes that warning and loads the content the fastest.
+
+            **Note:
+            You MUST set lazyload=disabled on the product main image in product-view.
+            Never lazyload the LCP.
             */
         </script>
         {{/if}}
